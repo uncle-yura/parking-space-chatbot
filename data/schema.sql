@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS working_hours (
 
 -- Bookings
 CREATE TABLE IF NOT EXISTS bookings (
-    id              SERIAL PRIMARY KEY,
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     customer_name   TEXT NOT NULL,
     car_number      TEXT NOT NULL,
     start_at        TIMESTAMPTZ NOT NULL,

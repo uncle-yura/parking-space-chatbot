@@ -1,14 +1,21 @@
+import logging
+import os
 from datetime import datetime
-from typing import Annotated, Literal, TypedDict
+from typing import Annotated, Literal, NotRequired, TypedDict
+from urllib.error import URLError
+from urllib.request import Request, urlopen
+from uuid import UUID
 
 from langchain_core.messages import AIMessage
 from langchain_core.messages.utils import AnyMessage
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.runtime import Runtime
-from langgraph.types import interrupt
+from langgraph.types import RetryPolicy, interrupt
 
 from app.graphs.utils import RagGraphContextSchema
+
+logger = logging.getLogger(__name__)
 
 
 class BookingState(TypedDict):
@@ -20,6 +27,7 @@ class BookingState(TypedDict):
     booking_approved: bool
     cancelled: bool
     error: str | None
+    booking_id: NotRequired[UUID]
 
 
 def _request_input(field: str, message: str, error: str | None):
@@ -198,16 +206,40 @@ def cancel_booking(state: BookingState):
     return {"messages": [AIMessage(content="Your booking has been cancelled.")]}
 
 
+def _notify_administrator() -> None:
+    url = os.environ.get("ADMIN_SERVER_URL", "http://localhost:8000")
+    token = os.environ.get("ADMIN_SERVER_TOKEN")
+    if not token:
+        raise RuntimeError("ADMIN_SERVER_TOKEN is not configured; reservation was not queued")
+
+    request = Request(
+        f"{url.rstrip('/')}/booking-processing",
+        headers={"Authorization": f"Bearer {token}"},
+        method="POST",
+    )
+    try:
+        with urlopen(request, timeout=3):
+            pass
+    except (URLError, TimeoutError):
+        logger.exception("Could not notify administrator server at %s", url)
+        raise
+
+
 def finish_booking(
     state: BookingState,
     runtime: Runtime[RagGraphContextSchema],
 ):
-    runtime.context.sql_service.create_booking(
+    booking = runtime.context.sql_service.create_booking(
         customer_name=state["full_name"],
         car_number=state["car_number"],
         start_at=state["reservation_start"],
         end_at=state["reservation_end"],
     )
+    return {"booking_id": booking["id"]}
+
+
+def notify_administrator(state: BookingState):
+    _notify_administrator()
     return {
         "messages": [
             AIMessage(
@@ -229,6 +261,11 @@ def get_booking_graph():
     booking_graph.add_node("confirm_booking", confirm_booking)
     booking_graph.add_node("cancel_booking", cancel_booking)
     booking_graph.add_node("finish_booking", finish_booking)
+    booking_graph.add_node(
+        "notify_administrator",
+        notify_administrator,
+        retry_policy=RetryPolicy(max_attempts=3),
+    )
 
     booking_graph.add_edge(START, "start_booking")
     booking_graph.add_edge("start_booking", "get_full_name")
@@ -249,7 +286,8 @@ def get_booking_graph():
     booking_graph.add_conditional_edges("confirm_booking", route_booking_decision)
     booking_graph.add_conditional_edges("get_reservation_end", validate_reservation_end)
     booking_graph.add_edge("date_range_error", "get_reservation_start")
-    booking_graph.add_edge("finish_booking", END)
+    booking_graph.add_edge("finish_booking", "notify_administrator")
+    booking_graph.add_edge("notify_administrator", END)
     booking_graph.add_edge("cancel_booking", END)
 
     return booking_graph

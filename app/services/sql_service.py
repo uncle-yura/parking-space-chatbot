@@ -1,10 +1,10 @@
-"""PostgreSQL service — drop/create, execute SQL, queries for parking data."""
-
 import os
-from contextlib import contextmanager
+from contextlib import asynccontextmanager, contextmanager
+from uuid import UUID
 
 import psycopg
 from langgraph.checkpoint.postgres import PostgresSaver
+from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 from psycopg import sql
 
 
@@ -61,6 +61,13 @@ class SqlService:
         DB_URI = self.get_uri("postgres")
         with PostgresSaver.from_conn_string(DB_URI) as cp:
             yield cp
+
+    @asynccontextmanager
+    async def async_checkpointer(self):
+        """Yield an async PostgreSQL checkpointer for async LangGraph runs."""
+        db_uri = self.get_uri("postgres")
+        async with AsyncPostgresSaver.from_conn_string(db_uri) as checkpointer:
+            yield checkpointer
 
     def drop_db(self) -> None:
         """Drop the parking database if it exists."""
@@ -125,7 +132,7 @@ class SqlService:
                           AND b.status = 'approved'
                           AND b.start_at < COALESCE(CAST(%s AS timestamptz), now() + interval '1 second')
                           AND b.end_at > COALESCE(CAST(%s AS timestamptz), now())
-                    )
+                    );
                     """,
                 (end_at, start_at),
             )
@@ -156,7 +163,7 @@ class SqlService:
                 """
                     SELECT wh.day_of_week, wh.start_time, wh.end_time, wh.date, wh.reason
                     FROM working_hours wh
-                    ORDER BY COALESCE(wh.date, '0001-01-01'), wh.day_of_week
+                    ORDER BY COALESCE(wh.date, '0001-01-01'), wh.day_of_week;
                     """
             )
             cols = [d.name for d in cur.description or []]
@@ -172,7 +179,7 @@ class SqlService:
                            b.end_at, b.status, b.lot_id, pl.identifier AS lot_identifier,
                            b.customer_id, b.created_at
                     FROM bookings b
-                    LEFT JOIN parking_lots pl ON pl.id = b.lot_id
+                    LEFT JOIN parking_lots pl ON pl.id = b.lot_id;
                 """
             params: list = []
             if lot_id:
@@ -185,6 +192,107 @@ class SqlService:
             cur.execute(sql_str, params)
             cols = [d.name for d in cur.description or []]
             return [dict(zip(cols, row)) for row in cur.fetchall()]
+
+    def get_booking_status(self, booking_id: UUID) -> dict | None:
+        """Return the status and assigned lot for one booking, without customer PII."""
+        with self.target_conn() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT b.id, b.status, pl.identifier AS lot_identifier
+                FROM bookings b
+                LEFT JOIN parking_lots pl ON pl.id = b.lot_id
+                WHERE b.id = %s;
+                """,
+                (booking_id,),
+            )
+            row = cur.fetchone()
+            if row is None:
+                return None
+            cols = [d.name for d in cur.description or []]
+            return dict(zip(cols, row))
+
+    def get_pending_bookings(self) -> list[dict]:
+        """Return reservation requests awaiting administrator review."""
+        with self.target_conn() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT id, customer_name, car_number, start_at, end_at, status, created_at
+                FROM bookings
+                WHERE status = 'pending'
+                ORDER BY created_at ASC, id ASC;
+                """
+            )
+            cols = [d.name for d in cur.description or []]
+            return [dict(zip(cols, row)) for row in cur.fetchall()]
+
+    def process_pending_booking(self, booking_id: UUID) -> dict | None:
+        """Approve a pending request if a lot is free, otherwise reject it.
+
+        Availability selection and status update are serialized in one transaction,
+        so concurrent administrator runs cannot assign the same lot for overlapping
+        reservations.
+        """
+        with self.target_conn() as conn:
+            conn.autocommit = False
+            try:
+                with conn.cursor() as cur:
+                    cur.execute("SELECT pg_advisory_xact_lock(681204, 1)")
+                    cur.execute(
+                        """
+                        SELECT start_at, end_at
+                        FROM bookings
+                        WHERE id = %s AND status = 'pending'
+                        FOR UPDATE;
+                        """,
+                        (booking_id,),
+                    )
+                    booking = cur.fetchone()
+                    if booking is None:
+                        conn.commit()
+                        return None
+
+                    start_at, end_at = booking
+                    cur.execute(
+                        """
+                        SELECT pl.id, pl.identifier
+                        FROM parking_lots pl
+                        WHERE NOT EXISTS (
+                            SELECT 1
+                            FROM bookings b
+                            WHERE b.lot_id = pl.id
+                              AND b.status = 'approved'
+                              AND b.start_at < %s
+                              AND b.end_at > %s
+                        )
+                        ORDER BY pl.id
+                        LIMIT 1;
+                        """,
+                        (end_at, start_at),
+                    )
+                    lot = cur.fetchone()
+                    status = "approved" if lot else "rejected"
+                    lot_id = lot[0] if lot else None
+                    cur.execute(
+                        """
+                        UPDATE bookings
+                        SET status = %s, lot_id = %s
+                        WHERE id = %s AND status = 'pending'
+                        RETURNING id;
+                        """,
+                        (status, lot_id, booking_id),
+                    )
+                    updated = cur.fetchone() is not None
+                conn.commit()
+                return (
+                    {"status": status, "lot_id": lot_id, "lot_identifier": lot[1]}
+                    if updated and lot
+                    else {"status": status, "lot_id": None, "lot_identifier": None}
+                    if updated
+                    else None
+                )
+            except Exception:
+                conn.rollback()
+                raise
 
     def create_booking(
         self,
@@ -199,7 +307,7 @@ class SqlService:
         sql_str = """
             INSERT INTO bookings (customer_name, car_number, start_at, end_at, lot_id, customer_id)
             VALUES (%s, %s, %s, %s, %s, %s)
-            RETURNING id, status, created_at
+            RETURNING id, status, created_at;
         """
         with self.target_conn() as conn, conn.cursor() as cur:
             cur.execute(
@@ -213,6 +321,8 @@ class SqlService:
                     customer_id,
                 ),
             )
-            row = cur.fetchone() or []
-        cols = [d.name for d in (cur.description or [])]
-        return dict(zip(cols, row))
+            row = cur.fetchone()
+            if row is None:
+                raise RuntimeError("Booking insert did not return a row.")
+            cols = [description.name for description in cur.description or []]
+            return dict(zip(cols, row))

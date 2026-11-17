@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from langchain.tools import ToolRuntime, tool
 
 from app.graphs.utils import RagGraphContextSchema
@@ -12,8 +14,20 @@ def get_free_parking_lots(
     """Count spaces free now, or throughout an ISO-8601 start/end interval."""
     if (period_start is None) != (period_end is None):
         return "Provide both period_start and period_end, or neither."
+
+    if period_start is not None and period_end is not None:
+        try:
+            start_at = datetime.fromisoformat(period_start)
+            end_at = datetime.fromisoformat(period_end)
+        except (TypeError, ValueError):
+            return "Use valid ISO-8601 datetimes for period_start and period_end."
+        if end_at <= start_at:
+            return "period_end must be later than period_start."
+    else:
+        start_at = end_at = None
+
     lots = runtime.context.sql_service.get_free_parking_lots(
-        start_at=period_start, end_at=period_end
+        start_at=start_at, end_at=end_at
     )
     if not lots:
         return "No parking lots found."
@@ -25,7 +39,14 @@ def get_prices(
     runtime: ToolRuntime[RagGraphContextSchema], as_of: str | None = None
 ) -> str:
     """Return the price effective now, or on the requested ISO-8601 date/time."""
-    prices = runtime.context.sql_service.get_prices(as_of=as_of)
+    parsed_as_of = None
+    if as_of is not None:
+        try:
+            parsed_as_of = datetime.fromisoformat(as_of)
+        except (TypeError, ValueError):
+            return "Use a valid ISO-8601 datetime for as_of."
+
+    prices = runtime.context.sql_service.get_prices(as_of=parsed_as_of)
     if not prices:
         return "No pricing data found."
 

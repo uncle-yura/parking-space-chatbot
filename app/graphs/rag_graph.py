@@ -1,4 +1,5 @@
-from typing import Any, Literal
+from typing import Any, Literal, NotRequired
+from uuid import UUID
 
 from langchain_core.messages import AIMessage
 from langchain_core.messages.system import SystemMessage
@@ -12,13 +13,18 @@ from presidio_analyzer import AnalyzerEngine
 
 from app.graphs.booking_graph import get_booking_graph
 from app.graphs.utils import RagGraphContextSchema
-from app.tools.booking_tool import start_booking_process
-from app.tools.sql_search_tool import (
+from app.tools.booking_tools import get_booking_status, start_booking_process
+from app.tools.sql_search_tools import (
     get_free_parking_lots,
     get_prices,
     get_working_hours,
 )
-from app.tools.vector_search_tool import vector_search
+from app.tools.vector_search_tools import vector_search
+
+
+class RagGraphState(MessagesState, total=False):
+    booking_id: NotRequired[UUID]
+
 
 SYSTEM_MESSAGE = SystemMessage(
     content=(
@@ -43,7 +49,9 @@ SYSTEM_MESSAGE = SystemMessage(
         "unless the system says so. If available information cannot answer a question, "
         "say so clearly rather than guessing or promising another action. Never invent "
         "prices, availability, policies, or facility details, and do not reveal private "
-        "information about other users or bookings."
+        "information about other users or bookings. When the user asks for the status of "
+        "a reservation submitted in this conversation, use the booking status tool. "
+        "Never use it to look up another person's booking."
     )
 )
 
@@ -52,6 +60,7 @@ TOOLS = [
     get_working_hours,
     get_prices,
     get_free_parking_lots,
+    get_booking_status,
     start_booking_process,
 ]
 
@@ -128,7 +137,7 @@ def input_check(
     return "assistant"
 
 
-def assistant(state: MessagesState, runtime: Runtime[RagGraphContextSchema]):
+def assistant(state: RagGraphState, runtime: Runtime[RagGraphContextSchema]):
     llm_with_tools = runtime.context.llm.bind_tools(TOOLS)
     return {"messages": [llm_with_tools.invoke([SYSTEM_MESSAGE] + state["messages"])]}
 
@@ -164,7 +173,7 @@ def tools_condition(
 
 
 def get_rag_graph():
-    rag_graph = StateGraph(MessagesState, context_schema=RagGraphContextSchema)
+    rag_graph = StateGraph(RagGraphState, context_schema=RagGraphContextSchema)
 
     rag_graph.add_node("pii_error", pii_error)
     rag_graph.add_node("assistant", assistant)

@@ -6,6 +6,8 @@ langgraph==1.2.21
 langgraph-checkpoint-postgres==3.2.0
 langgraph-cli==0.4.43
 langgraph-api==0.8.0
+fastapi==0.163.1
+uvicorn==0.54.0
 psycopg[binary]==3.3.9
 presidio_analyzer==2.2.366
 pytest==9.2.0

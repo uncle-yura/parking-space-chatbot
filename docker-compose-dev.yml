@@ -29,11 +29,35 @@ services:
             condition: service_healthy
         postgres:
             condition: service_healthy
+        administrator-server:
+            condition: service_healthy
     environment:
       LANGGRAPH_API_URL: "http://0.0.0.0:8123"
     env_file:
       - .env
   
+  administrator-server:
+    image: langgraph-api
+    container_name: administrator-server
+    command: ["uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8000"]
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    environment:
+      ADMIN_SERVER_TOKEN: "${ADMIN_SERVER_TOKEN:?Set ADMIN_SERVER_TOKEN in .env}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
   # PostgreSQL - stores dynamic data (space availability, working hours, prices)
   postgres:
     image: postgres:16-alpine

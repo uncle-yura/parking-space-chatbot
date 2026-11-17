@@ -46,3 +46,18 @@ class RagGraphContextSchema(BaseModel):
                 ).get_vectorstore()
 
         return data
+
+
+class AdministratorGraphContextSchema(BaseModel):
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    sql_service: SqlService
+
+    # LangGraph Studio runs independently, so provide the SQL service when no
+    # runtime context was supplied by the caller.
+    @model_validator(mode="before")
+    @classmethod
+    def fill_missing(cls, data):
+        if isinstance(data, dict) and not data.get("sql_service"):
+            data["sql_service"] = SqlService()
+        return data
