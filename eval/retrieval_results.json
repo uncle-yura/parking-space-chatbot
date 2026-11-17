@@ -1,0 +1,733 @@
+{
+  "metrics": {
+    "recall_at_3": 0.8809523809523809,
+    "precision_at_3": 0.3333333333333333,
+    "mrr": 0.888888888888889,
+    "retrieval_latency_ms": 105.171041667442,
+    "retrieval_latency_p95_ms": 64.39093500375748
+  },
+  "results": [
+    {
+      "question": "What does the parking platform help drivers do?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "parking_overview"
+      ],
+      "retrieved_doc_ids": [
+        "parking_overview",
+        "lost_in_lot_help",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 2608.7949560023844,
+      "error": ""
+    },
+    {
+      "question": "Can I reserve a parking space before I reach my destination?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "why_use_parking_app",
+        "parking_overview"
+      ],
+      "retrieved_doc_ids": [
+        "how_it_works",
+        "lost_parking_pass",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 0.0,
+      "precision_at_3": 0.0,
+      "mrr": 0.0,
+      "retrieval_latency_ms": 48.89417899539694,
+      "error": ""
+    },
+    {
+      "question": "What are the main advantages of using the app instead of looking for street parking?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "why_use_parking_app"
+      ],
+      "retrieved_doc_ids": [
+        "why_use_parking_app",
+        "parking_overview",
+        "how_it_works"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 72.53266600309871,
+      "error": ""
+    },
+    {
+      "question": "Does the app provide navigation to the parking space?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "why_use_parking_app",
+        "getting_directions"
+      ],
+      "retrieved_doc_ids": [
+        "getting_directions",
+        "how_it_works",
+        "parking_overview"
+      ],
+      "recall_at_3": 0.5,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.23948900087271,
+      "error": ""
+    },
+    {
+      "question": "How do I find a parking option near a place I want to visit?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "how_it_works",
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "how_it_works",
+        "parking_overview",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 0.5,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.290029999800026,
+      "error": ""
+    },
+    {
+      "question": "What steps do I follow to book a parking spot?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "how_it_works",
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "how_it_works",
+        "getting_directions",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 0.5,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.80366100202082,
+      "error": ""
+    },
+    {
+      "question": "Can I book a space for several days rather than just a few hours?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "what_to_do_if_full",
+        "location_details_and_amenities",
+        "how_it_works"
+      ],
+      "recall_at_3": 0.0,
+      "precision_at_3": 0.0,
+      "mrr": 0.0,
+      "retrieval_latency_ms": 40.95707200031029,
+      "error": ""
+    },
+    {
+      "question": "What information can I compare before choosing a parking lot?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_steps_detail",
+        "location_details_and_amenities"
+      ],
+      "retrieved_doc_ids": [
+        "location_details_and_amenities",
+        "lost_parking_pass",
+        "booking_steps_detail"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.69707000255585,
+      "error": ""
+    },
+    {
+      "question": "Which payment options can I use when booking?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "payment_methods",
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "payment_methods",
+        "receipts_and_invoices",
+        "booking_steps_detail"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 37.73953799827723,
+      "error": ""
+    },
+    {
+      "question": "Are payments made through the app encrypted?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "payment_methods"
+      ],
+      "retrieved_doc_ids": [
+        "payment_methods",
+        "why_use_parking_app",
+        "receipts_and_invoices"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 51.38225600239821,
+      "error": ""
+    },
+    {
+      "question": "Where in the app can I update my saved card details?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "payment_methods"
+      ],
+      "retrieved_doc_ids": [
+        "payment_methods",
+        "receipts_and_invoices",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.46415000327397,
+      "error": ""
+    },
+    {
+      "question": "Can a temporary amount be held on my card when I make a reservation?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "payment_methods"
+      ],
+      "retrieved_doc_ids": [
+        "payment_methods",
+        "what_to_do_if_full",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.81890600355109,
+      "error": ""
+    },
+    {
+      "question": "Can I get a receipt after paying for parking?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "receipts_and_invoices"
+      ],
+      "retrieved_doc_ids": [
+        "receipts_and_invoices",
+        "lost_parking_pass",
+        "getting_directions"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.96861600171542,
+      "error": ""
+    },
+    {
+      "question": "How can I download an invoice for a business expense?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "receipts_and_invoices"
+      ],
+      "retrieved_doc_ids": [
+        "receipts_and_invoices",
+        "corporate_parking",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.61453200120013,
+      "error": ""
+    },
+    {
+      "question": "Can companies manage parking expenses for their employees?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "corporate_parking"
+      ],
+      "retrieved_doc_ids": [
+        "corporate_parking",
+        "parking_overview",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 64.39093500375748,
+      "error": ""
+    },
+    {
+      "question": "What kinds of vehicles are supported by the platform?",
+      "category": "parking_types",
+      "relevant_doc_ids": [
+        "vehicle_types_supported"
+      ],
+      "retrieved_doc_ids": [
+        "vehicle_types_supported",
+        "location_details_and_amenities",
+        "parking_locations"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 55.695580995234195,
+      "error": ""
+    },
+    {
+      "question": "Are vans and small trucks accepted at every parking location?",
+      "category": "parking_types",
+      "relevant_doc_ids": [
+        "vehicle_types_supported"
+      ],
+      "retrieved_doc_ids": [
+        "vehicle_types_supported",
+        "location_details_and_amenities",
+        "parking_locations"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.641322993906215,
+      "error": ""
+    },
+    {
+      "question": "How can an electric vehicle driver find a parking space with a charger?",
+      "category": "parking_types",
+      "relevant_doc_ids": [
+        "ev_charging_parking"
+      ],
+      "retrieved_doc_ids": [
+        "ev_charging_parking",
+        "how_it_works",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.49473600066267,
+      "error": ""
+    },
+    {
+      "question": "What types of EV chargers may be available at partner parking lots?",
+      "category": "parking_types",
+      "relevant_doc_ids": [
+        "ev_charging_parking"
+      ],
+      "retrieved_doc_ids": [
+        "ev_charging_parking",
+        "vehicle_types_supported",
+        "location_details_and_amenities"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.088694004633,
+      "error": ""
+    },
+    {
+      "question": "What is the difference between covered, open-air, and underground parking?",
+      "category": "parking_types",
+      "relevant_doc_ids": [
+        "covered_vs_outdoor_parking"
+      ],
+      "retrieved_doc_ids": [
+        "covered_vs_outdoor_parking",
+        "location_details_and_amenities",
+        "booking_steps_detail"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.372735995741095,
+      "error": ""
+    },
+    {
+      "question": "Which parking type usually costs the least?",
+      "category": "parking_types",
+      "relevant_doc_ids": [
+        "covered_vs_outdoor_parking"
+      ],
+      "retrieved_doc_ids": [
+        "covered_vs_outdoor_parking",
+        "location_details_and_amenities",
+        "booking_steps_detail"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.272161000350025,
+      "error": ""
+    },
+    {
+      "question": "In what kinds of areas does the platform offer parking?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "parking_locations"
+      ],
+      "retrieved_doc_ids": [
+        "parking_overview",
+        "parking_locations",
+        "location_details_and_amenities"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 43.94844100170303,
+      "error": ""
+    },
+    {
+      "question": "What should I do if I cannot find parking coverage for my destination?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "parking_locations"
+      ],
+      "retrieved_doc_ids": [
+        "parking_locations",
+        "lost_parking_pass",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 58.2661160005955,
+      "error": ""
+    },
+    {
+      "question": "Are shuttle services available for airport parking?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "airport_parking"
+      ],
+      "retrieved_doc_ids": [
+        "airport_parking",
+        "accessibility_parking",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.44540700124344,
+      "error": ""
+    },
+    {
+      "question": "What airport parking options are offered for longer trips?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "airport_parking"
+      ],
+      "retrieved_doc_ids": [
+        "airport_parking",
+        "covered_vs_outdoor_parking",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.866369002789725,
+      "error": ""
+    },
+    {
+      "question": "What details can I see about a specific parking facility before booking?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "location_details_and_amenities"
+      ],
+      "retrieved_doc_ids": [
+        "getting_directions",
+        "lost_parking_pass",
+        "how_it_works"
+      ],
+      "recall_at_3": 0.0,
+      "precision_at_3": 0.0,
+      "mrr": 0.0,
+      "retrieval_latency_ms": 42.48665199702373,
+      "error": ""
+    },
+    {
+      "question": "How do I get turn-by-turn directions after making a reservation?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "getting_directions"
+      ],
+      "retrieved_doc_ids": [
+        "getting_directions",
+        "how_it_works",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.15802099922439,
+      "error": ""
+    },
+    {
+      "question": "Where can I find my active parking reservation if I cannot see the confirmation?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_parking_pass"
+      ],
+      "retrieved_doc_ids": [
+        "lost_parking_pass",
+        "lost_in_lot_help",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.48495099757565,
+      "error": ""
+    },
+    {
+      "question": "What happens if the parking lot appears full when I am searching?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "what_to_do_if_full"
+      ],
+      "retrieved_doc_ids": [
+        "what_to_do_if_full",
+        "lost_parking_pass",
+        "lost_in_lot_help"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.45461500209058,
+      "error": ""
+    },
+    {
+      "question": "What security measures help protect vehicles at partner parking lots?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "safety_and_security"
+      ],
+      "retrieved_doc_ids": [
+        "safety_and_security",
+        "vehicle_types_supported",
+        "accessibility_parking"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.97628100134898,
+      "error": ""
+    },
+    {
+      "question": "Can I filter for parking spaces that are accessible to disabled drivers or passengers?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "accessibility_parking"
+      ],
+      "retrieved_doc_ids": [
+        "accessibility_parking",
+        "vehicle_types_supported",
+        "location_details_and_amenities"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.847574997111224,
+      "error": ""
+    },
+    {
+      "question": "Could I need to show a disability parking permit to use an accessible space?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "accessibility_parking"
+      ],
+      "retrieved_doc_ids": [
+        "accessibility_parking",
+        "lost_parking_pass",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.26652300026035,
+      "error": ""
+    },
+    {
+      "question": "What should I check if I cannot find my assigned spot inside the facility?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_in_lot_help"
+      ],
+      "retrieved_doc_ids": [
+        "lost_in_lot_help",
+        "what_to_do_if_full",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.413909005816095,
+      "error": ""
+    },
+    {
+      "question": "How can I reach someone for help while I am at the parking lot?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_in_lot_help",
+        "support_and_contact"
+      ],
+      "retrieved_doc_ids": [
+        "lost_in_lot_help",
+        "support_and_contact",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.68594099651091,
+      "error": ""
+    },
+    {
+      "question": "What are the customer support channels and when are they available?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "support_and_contact"
+      ],
+      "retrieved_doc_ids": [
+        "support_and_contact",
+        "what_to_do_if_full",
+        "location_details_and_amenities"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.07390799961286,
+      "error": ""
+    },
+    {
+      "question": "Can I contact the specific parking facility about an active booking?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "support_and_contact"
+      ],
+      "retrieved_doc_ids": [
+        "lost_parking_pass",
+        "lost_in_lot_help",
+        "support_and_contact"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "retrieval_latency_ms": 44.431688998884056,
+      "error": ""
+    },
+    {
+      "question": "Do parking lot listings show accessibility features and operating hours?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "location_details_and_amenities"
+      ],
+      "retrieved_doc_ids": [
+        "location_details_and_amenities",
+        "accessibility_parking",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 49.651093999273144,
+      "error": ""
+    },
+    {
+      "question": "What should I do if I arrive and find a problem with my reserved spot?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "what_to_do_if_full",
+        "support_and_contact"
+      ],
+      "retrieved_doc_ids": [
+        "what_to_do_if_full",
+        "lost_parking_pass",
+        "lost_in_lot_help"
+      ],
+      "recall_at_3": 0.5,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.14556900114985,
+      "error": ""
+    },
+    {
+      "question": "Can businesses get consolidated parking bills and expense reports?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "corporate_parking"
+      ],
+      "retrieved_doc_ids": [
+        "corporate_parking",
+        "receipts_and_invoices",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.502314005512744,
+      "error": ""
+    },
+    {
+      "question": "What is the address listed for the fictional Demo Garage test location?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "synthetic_demo_location"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_demo_location",
+        "parking_locations",
+        "location_details_and_amenities"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.50044400396291,
+      "error": ""
+    },
+    {
+      "question": "Can I navigate to or make a real booking at Demo Garage?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "synthetic_demo_location"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_demo_location",
+        "how_it_works",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.37090500444174,
+      "error": ""
+    },
+    {
+      "question": "Where can I find the entry code or QR instructions for a booked facility?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "getting_directions"
+      ],
+      "retrieved_doc_ids": [
+        "lost_in_lot_help",
+        "getting_directions",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 41.0537390052923,
+      "error": ""
+    }
+  ]
+}

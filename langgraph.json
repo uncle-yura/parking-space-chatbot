@@ -1,0 +1,8 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "rag_graph": "./app/graphs/rag_graph.py:get_rag_graph",
+    "booking_graph": "./app/graphs/booking_graph.py:get_booking_graph"
+  },
+  "env": "./.env"
+}

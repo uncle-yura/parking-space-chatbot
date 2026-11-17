@@ -1,0 +1,149 @@
+[
+  {
+    "id": "parking_overview",
+    "title": "What is a Parking Space and How Does It Work?",
+    "category": "general",
+    "tags": ["overview", "introduction"],
+    "content": "A parking space is a designated area for parking vehicles. Our platform connects drivers with available parking spaces in urban areas, allowing you to search, book, and pay for parking through the app. Whether you need a spot near a meeting, airport parking, or a monthly subscription at your residence, we make it simple and hassle-free."
+  },
+  {
+    "id": "why_use_parking_app",
+    "title": "Why Use Our Parking App?",
+    "category": "general",
+    "tags": ["benefits", "features"],
+    "content": "Our app saves you time and money by guaranteeing a parking spot before you arrive. Key benefits include real-time availability, cashless payments, automated billing, reserved spots, flexible duration bookings, and detailed GPS navigation to your space. Thousands of drivers rely on us daily to avoid circling blocks or dealing with expired meters."
+  },
+  {
+    "id": "how_it_works",
+    "title": "How Does the Parking Booking Process Work?",
+    "category": "booking",
+    "tags": ["how-to", "process"],
+    "content": "Booking a parking space takes just three steps: First, open the app and enter your destination or browse nearby lots on the map. Second, choose an available space, select your desired dates and times, and confirm the booking. The parking spot is now reserved for you — receive a digital confirmation with directions and entry instructions."
+  },
+  {
+    "id": "booking_steps_detail",
+    "title": "Step-by-Step Booking Guide",
+    "category": "booking",
+    "tags": ["tutorial", "how-to"],
+    "content": "Step 1: Search — Enter your destination address or enable location services to see nearby parking options. Step 2: Compare — View pricing, distance, space type (covered, outdoor, underground, EV-charging), and reviews for each lot. Step 3: Select Duration — Choose start and end times; hourly, daily, or multi-day bookings are all supported. Step 4: Reserve — Pay securely in the app with your saved credit card, debit card, Apple Pay, or Google Pay. You'll get an instant confirmation and digital parking pass."
+  },
+  {
+    "id": "payment_methods",
+    "title": "What Payment Methods Are Accepted?",
+    "category": "payment",
+    "tags": ["billing", "methods"],
+    "content": "We accept major credit cards (Visa, Mastercard, American Express), debit cards, Apple Pay, Google Pay, and PayPal. All transactions are encrypted and securely processed. You can manage your saved payment methods in the app under Profile > Payment Methods. A temporary hold may be placed on your card at the time of booking."
+  },
+  {
+    "id": "vehicle_types_supported",
+    "title": "What Types of Vehicles Can Park?",
+    "category": "parking-types",
+    "tags": ["vehicles", "accommodation"],
+    "content": "Our app supports standard passenger vehicles (sedans, SUVs, hatchbacks), compact cars, motorcycles, and electric vehicles. Some lots also accommodate larger vehicles such as vans or small trucks, but these are limited in number and may cost more. When browsing lots, the vehicle type filter lets you find only spaces that suit your vehicle."
+  },
+  {
+    "id": "ev_charging_parking",
+    "title": "Parking with Electric Vehicle Charging",
+    "category": "parking-types",
+    "tags": ["EV", "charging", "electric"],
+    "content": "Select parking locations offer EV charging stations, including Level 2 (standard) and Level 3 (fast DC) chargers. When searching for a lot, use the EV filter to find spaces with available chargers. The app will show you the charger type, charging rate per kWh or hour, and how many stalls have active chargers. Some lots allow free charging with extended park-and-pay."
+  },
+  {
+    "id": "covered_vs_outdoor_parking",
+    "title": "Covered vs Outdoor vs Underground Parking",
+    "category": "parking-types",
+    "tags": ["types", "space-options"],
+    "content": "We offer three main space types: Covered parking is sheltered under a structure, protecting your vehicle from rain, snow, and sun. Outdoor parking is in open-air lots or street-side spaces and is usually the most affordable option. Underground parking provides maximum security and climate protection, often located inside multi-level buildings. Each type is filterable in the app search."
+  },
+  {
+    "id": "parking_locations",
+    "title": "What Locations Do You Cover?",
+    "category": "location",
+    "tags": ["coverage", "areas"],
+    "content": "We currently operate in major metropolitan areas across the country, including city centers, airports, hospitals, university campuses, shopping districts, sports stadiums, and convention centers. Coverage is expanding monthly. Use the map view in the app to see available parking near any address or landmark. If your desired location isn't listed yet, you can request it to be added."
+  },
+  {
+    "id": "airport_parking",
+    "title": "Airport Parking Services",
+    "category": "location",
+    "tags": ["airport", "travel"],
+    "content": "We offer several types of airport parking: Park-and-Go lots near major terminals with free shuttle service every 10–15 minutes. Valet parking where you drop your car at the terminal and staff parks it for you — pick it up upon return. Long-term and economy lots for multi-day trips at discounted daily rates. EV charging stations are also available at select airport locations."
+  },
+  {
+    "id": "location_details_and_amenities",
+    "title": "What Details Are Available for Each Parking Lot?",
+    "category": "location",
+    "tags": ["amenities", "features"],
+    "content": "Each lot listing includes the exact address and GPS coordinates, distance from your search point, pricing per hour or day, available space type (covered/outdoor/underground), operating hours (24/7 or limited), security features (CCTV surveillance, on-site attendants, barrier gates, lighting), accessibility options (handicap spaces, EV chargers), and reviews from other users."
+  },
+  {
+    "id": "getting_directions",
+    "title": "How Do I Get Directions to My Parking Spot?",
+    "category": "booking",
+    "tags": ["navigation", "directions"],
+    "content": "After confirming your booking, the app provides turn-by-turn GPS navigation to the parking facility. You can use the built-in map or export directions to Apple Maps or Google Maps. Upon arrival, you will receive specific instructions such as gate codes, floor numbers, section markers, or QR code validation steps needed to enter and park."
+  },
+  {
+    "id": "lost_parking_pass",
+    "title": "I Can't Find My Parking Confirmation — What Do I Do?",
+    "category": "booking",
+    "tags": ["troubleshooting", "faq"],
+    "content": "Your parking confirmation is stored in the app under Bookings > Active. You can also find it in your email inbox from bookings@parking-chatbot.com. If you arrive at the lot without a visible confirmation, simply show your profile to the attendant — all reservations are linked to your account and vehicle license plate number."
+  },
+  {
+    "id": "what_to_do_if_full",
+    "title": "What Happens if My Lot Is Full When I Arrive?",
+    "category": "booking",
+    "tags": ["troubleshooting", "policy"],
+    "content": "When you book through our platform, your spot is reserved and guaranteed up to 30 minutes before the start time. If a lot shows as full in real-time, the app will immediately suggest nearby alternative lots with comparable pricing. You can rebook instantly with one tap. In rare cases where this happens at check-in, contact support for compensation."
+  },
+  {
+    "id": "safety_and_security",
+    "title": "Is My Vehicle Safe While Parked?",
+    "category": "general",
+    "tags": ["safety", "security"],
+    "content": "Security is a top priority. All partner lots are vetted for safety and include features such as 24/7 CCTV surveillance, well-lit areas, on-site attendants during operating hours, secure barrier/gate systems, and regular patrols where applicable. High-risk areas have enhanced security protocols. Users can read safety reviews from other parkers before choosing a lot."
+  },
+  {
+    "id": "accessibility_parking",
+    "title": "Parking for Disabled Drivers and Passengers",
+    "category": "general",
+    "tags": ["accessibility", "ada"],
+    "content": "Most of our partner lots include ADA-compliant handicap parking spaces with wider stalls and ramp access. When searching, you can filter for accessible spots to ensure availability in advance. Some lots also offer valet services specifically designed for passengers with limited mobility. A valid disability parking permit may be required — check individual lot details for requirements."
+  },
+  {
+    "id": "lost_in_lot_help",
+    "title": "I'm Having Trouble Finding My Parking Spot — Help!",
+    "category": "booking",
+    "tags": ["troubleshooting", "navigation"],
+    "content": "First, check your active booking for the lot name, floor level, and section code. Most lots display a parking pass QR code with facility details. Many facilities have marked entry points and signage — look for your booked lot's branding. If you are still lost, tap 'Need Help' in the app to connect with on-site support via call or chat."
+  },
+  {
+    "id": "receipts_and_invoices",
+    "title": "How Do I Get a Receipt or Invoice?",
+    "category": "payment",
+    "tags": ["billing", "receipts"],
+    "content": "After each payment, a digital receipt is generated and sent to your email. To access it later, go to Bookings > History > Select the booking > View Receipt. Invoices for business expenses can be generated with company details added under Profile > Invoice Settings. PDF copies are also available for download directly from the app."
+  },
+  {
+    "id": "corporate_parking",
+    "title": "Corporate and Business Parking Accounts",
+    "category": "general",
+    "tags": ["corporate", "business"],
+    "content": "Businesses can set up corporate parking accounts with centralized billing, employee access management, and volume discounts. Employees book through their own accounts but charges are billed to the company invoice. Monthly consolidated billing and detailed expense reports are provided. Contact our business team for custom pricing and setup."
+  },
+  {
+    "id": "support_and_contact",
+    "title": "How Do I Contact Customer Support?",
+    "category": "general",
+    "tags": ["support", "contact"],
+    "content": "Customer support is available 24/7 through multiple channels: In-app live chat (Profile > Help & Support), email at support@parking-chatbot.com, and phone at 1-800-PARK-NOW. For urgent on-site issues, each active booking includes a direct line to the specific lot's management team. Average response time for live chat is under 2 minutes."
+  },
+  {
+    "id": "synthetic_demo_location",
+    "title": "Synthetic Demo Parking Location",
+    "category": "location",
+    "tags": ["synthetic", "demo", "address", "test-location"],
+    "content": "TEST DATA — this is a fictional parking location for chatbot testing and is not a real facility. Demo Garage is listed at 42 Sample Street, Testville, ZZ 00000. This placeholder address is not suitable for navigation or real bookings. No real-world hours, pricing, amenities, or availability are defined for this demo location."
+  }
+]

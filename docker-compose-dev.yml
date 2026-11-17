@@ -1,0 +1,85 @@
+services:
+  langgraph-api:
+    image: langgraph-api
+    container_name: langgraph-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8123:8123
+    volumes:
+      - ./app:/app
+      - ./data:/data 
+      - ./eval:/eval
+      - ./langgraph.json:/langgraph.json
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8123/ok', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 15s
+    command: >
+      langgraph dev
+      --host 0.0.0.0
+      --port 8123
+      --no-browser
+      --allow-blocking
+    depends_on:
+        weaviate:
+            condition: service_healthy
+        postgres:
+            condition: service_healthy
+    environment:
+      LANGGRAPH_API_URL: "http://0.0.0.0:8123"
+    env_file:
+      - .env
+  
+  # PostgreSQL - stores dynamic data (space availability, working hours, prices)
+  postgres:
+    image: postgres:16-alpine
+    container_name: parking-chatbot-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-parking_chatbot}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Weaviate vector store
+  weaviate:
+    command:
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8080'
+    - --scheme
+    - http
+    image: cr.weaviate.io/semitechnologies/weaviate:1.40.4
+    ports:
+    - 8080:8080
+    - 50051:50051
+    volumes:
+    - weaviate_data:/var/lib/weaviate
+    restart: on-failure:0
+    environment:
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      CLUSTER_HOSTNAME: 'node1'
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/v1/.well-known/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  postgres_data:
+  weaviate_data:

@@ -1,0 +1,304 @@
+[
+  {
+    "question": "What does the parking platform help drivers do?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "parking_overview"
+    ]
+  },
+  {
+    "question": "Can I reserve a parking space before I reach my destination?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "why_use_parking_app",
+      "parking_overview"
+    ]
+  },
+  {
+    "question": "What are the main advantages of using the app instead of looking for street parking?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "why_use_parking_app"
+    ]
+  },
+  {
+    "question": "Does the app provide navigation to the parking space?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "why_use_parking_app",
+      "getting_directions"
+    ]
+  },
+  {
+    "question": "How do I find a parking option near a place I want to visit?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "how_it_works",
+      "booking_steps_detail"
+    ]
+  },
+  {
+    "question": "What steps do I follow to book a parking spot?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "how_it_works",
+      "booking_steps_detail"
+    ]
+  },
+  {
+    "question": "Can I book a space for several days rather than just a few hours?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "booking_steps_detail"
+    ]
+  },
+  {
+    "question": "What information can I compare before choosing a parking lot?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "booking_steps_detail",
+      "location_details_and_amenities"
+    ]
+  },
+  {
+    "question": "Which payment options can I use when booking?",
+    "category": "payment",
+    "relevant_doc_ids": [
+      "payment_methods",
+      "booking_steps_detail"
+    ]
+  },
+  {
+    "question": "Are payments made through the app encrypted?",
+    "category": "payment",
+    "relevant_doc_ids": [
+      "payment_methods"
+    ]
+  },
+  {
+    "question": "Where in the app can I update my saved card details?",
+    "category": "payment",
+    "relevant_doc_ids": [
+      "payment_methods"
+    ]
+  },
+  {
+    "question": "Can a temporary amount be held on my card when I make a reservation?",
+    "category": "payment",
+    "relevant_doc_ids": [
+      "payment_methods"
+    ]
+  },
+  {
+    "question": "Can I get a receipt after paying for parking?",
+    "category": "payment",
+    "relevant_doc_ids": [
+      "receipts_and_invoices"
+    ]
+  },
+  {
+    "question": "How can I download an invoice for a business expense?",
+    "category": "payment",
+    "relevant_doc_ids": [
+      "receipts_and_invoices"
+    ]
+  },
+  {
+    "question": "Can companies manage parking expenses for their employees?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "corporate_parking"
+    ]
+  },
+  {
+    "question": "What kinds of vehicles are supported by the platform?",
+    "category": "parking_types",
+    "relevant_doc_ids": [
+      "vehicle_types_supported"
+    ]
+  },
+  {
+    "question": "Are vans and small trucks accepted at every parking location?",
+    "category": "parking_types",
+    "relevant_doc_ids": [
+      "vehicle_types_supported"
+    ]
+  },
+  {
+    "question": "How can an electric vehicle driver find a parking space with a charger?",
+    "category": "parking_types",
+    "relevant_doc_ids": [
+      "ev_charging_parking"
+    ]
+  },
+  {
+    "question": "What types of EV chargers may be available at partner parking lots?",
+    "category": "parking_types",
+    "relevant_doc_ids": [
+      "ev_charging_parking"
+    ]
+  },
+  {
+    "question": "What is the difference between covered, open-air, and underground parking?",
+    "category": "parking_types",
+    "relevant_doc_ids": [
+      "covered_vs_outdoor_parking"
+    ]
+  },
+  {
+    "question": "Which parking type usually costs the least?",
+    "category": "parking_types",
+    "relevant_doc_ids": [
+      "covered_vs_outdoor_parking"
+    ]
+  },
+  {
+    "question": "In what kinds of areas does the platform offer parking?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "parking_locations"
+    ]
+  },
+  {
+    "question": "What should I do if I cannot find parking coverage for my destination?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "parking_locations"
+    ]
+  },
+  {
+    "question": "Are shuttle services available for airport parking?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "airport_parking"
+    ]
+  },
+  {
+    "question": "What airport parking options are offered for longer trips?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "airport_parking"
+    ]
+  },
+  {
+    "question": "What details can I see about a specific parking facility before booking?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "location_details_and_amenities"
+    ]
+  },
+  {
+    "question": "How do I get turn-by-turn directions after making a reservation?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "getting_directions"
+    ]
+  },
+  {
+    "question": "Where can I find my active parking reservation if I cannot see the confirmation?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "lost_parking_pass"
+    ]
+  },
+  {
+    "question": "What happens if the parking lot appears full when I am searching?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "what_to_do_if_full"
+    ]
+  },
+  {
+    "question": "What security measures help protect vehicles at partner parking lots?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "safety_and_security"
+    ]
+  },
+  {
+    "question": "Can I filter for parking spaces that are accessible to disabled drivers or passengers?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "accessibility_parking"
+    ]
+  },
+  {
+    "question": "Could I need to show a disability parking permit to use an accessible space?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "accessibility_parking"
+    ]
+  },
+  {
+    "question": "What should I check if I cannot find my assigned spot inside the facility?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "lost_in_lot_help"
+    ]
+  },
+  {
+    "question": "How can I reach someone for help while I am at the parking lot?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "lost_in_lot_help",
+      "support_and_contact"
+    ]
+  },
+  {
+    "question": "What are the customer support channels and when are they available?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "support_and_contact"
+    ]
+  },
+  {
+    "question": "Can I contact the specific parking facility about an active booking?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "support_and_contact"
+    ]
+  },
+  {
+    "question": "Do parking lot listings show accessibility features and operating hours?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "location_details_and_amenities"
+    ]
+  },
+  {
+    "question": "What should I do if I arrive and find a problem with my reserved spot?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "what_to_do_if_full",
+      "support_and_contact"
+    ]
+  },
+  {
+    "question": "Can businesses get consolidated parking bills and expense reports?",
+    "category": "general",
+    "relevant_doc_ids": [
+      "corporate_parking"
+    ]
+  },
+  {
+    "question": "What is the address listed for the fictional Demo Garage test location?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "synthetic_demo_location"
+    ]
+  },
+  {
+    "question": "Can I navigate to or make a real booking at Demo Garage?",
+    "category": "location",
+    "relevant_doc_ids": [
+      "synthetic_demo_location"
+    ]
+  },
+  {
+    "question": "Where can I find the entry code or QR instructions for a booked facility?",
+    "category": "booking",
+    "relevant_doc_ids": [
+      "getting_directions"
+    ]
+  }
+]
