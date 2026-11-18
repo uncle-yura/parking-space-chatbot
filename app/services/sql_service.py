@@ -211,19 +211,58 @@ class SqlService:
             cols = [d.name for d in cur.description or []]
             return dict(zip(cols, row))
 
-    def get_pending_bookings(self) -> list[dict]:
-        """Return reservation requests awaiting administrator review."""
+    def claim_pending_bookings(self) -> list[dict]:
+        """Atomically claim pending requests so concurrent admins get disjoint work."""
         with self.target_conn() as conn, conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT id, customer_name, car_number, start_at, end_at, status, created_at
-                FROM bookings
-                WHERE status = 'pending'
-                ORDER BY created_at ASC, id ASC;
+                WITH eligible AS (
+                    SELECT id
+                    FROM bookings
+                    WHERE status = 'pending'
+                      AND (
+                          review_claimed_at IS NULL
+                          OR review_claimed_at < now() - interval '30 minutes'
+                      )
+                    ORDER BY created_at ASC, id ASC
+                    FOR UPDATE SKIP LOCKED
+                )
+                UPDATE bookings AS b
+                SET review_claimed_at = now()
+                FROM eligible AS e
+                WHERE b.id = e.id
+                RETURNING b.id, b.customer_name, b.car_number, b.start_at,
+                          b.end_at, b.status, b.created_at;
                 """
             )
-            cols = [d.name for d in cur.description or []]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
+            columns = [description.name for description in cur.description or []]
+            return [dict(zip(columns, row)) for row in cur.fetchall()]
+
+    def release_booking_claim(self, booking_id: UUID) -> None:
+        """Release an unprocessed request so another admin run can retry it."""
+        with self.target_conn() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE bookings SET review_claimed_at = NULL
+                WHERE id = %s AND status = 'pending';
+                """,
+                (booking_id,),
+            )
+
+    def reject_pending_booking(self, booking_id: UUID) -> dict | None:
+        """Reject a pending reservation after agent review."""
+        with self.target_conn() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE bookings
+                SET status = 'rejected', review_claimed_at = NULL
+                WHERE id = %s AND status = 'pending'
+                  AND review_claimed_at IS NOT NULL
+                RETURNING id;
+                """,
+                (booking_id,),
+            )
+            return {"status": "rejected", "lot_id": None, "lot_identifier": None} if cur.fetchone() else None
 
     def process_pending_booking(self, booking_id: UUID) -> dict | None:
         """Approve a pending request if a lot is free, otherwise reject it.
@@ -242,6 +281,7 @@ class SqlService:
                         SELECT start_at, end_at
                         FROM bookings
                         WHERE id = %s AND status = 'pending'
+                          AND review_claimed_at IS NOT NULL
                         FOR UPDATE;
                         """,
                         (booking_id,),
@@ -275,8 +315,9 @@ class SqlService:
                     cur.execute(
                         """
                         UPDATE bookings
-                        SET status = %s, lot_id = %s
+                        SET status = %s, lot_id = %s, review_claimed_at = NULL
                         WHERE id = %s AND status = 'pending'
+                          AND review_claimed_at IS NOT NULL
                         RETURNING id;
                         """,
                         (status, lot_id, booking_id),

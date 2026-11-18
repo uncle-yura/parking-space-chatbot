@@ -210,7 +210,9 @@ def _notify_administrator() -> None:
     url = os.environ.get("ADMIN_SERVER_URL", "http://localhost:8000")
     token = os.environ.get("ADMIN_SERVER_TOKEN")
     if not token:
-        raise RuntimeError("ADMIN_SERVER_TOKEN is not configured; reservation was not queued")
+        raise RuntimeError(
+            "ADMIN_SERVER_TOKEN is not configured; reservation was not queued"
+        )
 
     request = Request(
         f"{url.rstrip('/')}/booking-processing",
@@ -249,28 +251,28 @@ def notify_administrator(state: BookingState):
     }
 
 
-def get_booking_graph():
-    booking_graph = StateGraph(BookingState, context_schema=RagGraphContextSchema)
+def build_booking_graph():
+    graph = StateGraph(BookingState, context_schema=RagGraphContextSchema)
 
-    booking_graph.add_node("start_booking", start_booking)
-    booking_graph.add_node("get_full_name", get_full_name)
-    booking_graph.add_node("get_car_number", get_car_number)
-    booking_graph.add_node("get_reservation_start", get_reservation_start)
-    booking_graph.add_node("get_reservation_end", get_reservation_end)
-    booking_graph.add_node("date_range_error", date_range_error)
-    booking_graph.add_node("confirm_booking", confirm_booking)
-    booking_graph.add_node("cancel_booking", cancel_booking)
-    booking_graph.add_node("finish_booking", finish_booking)
-    booking_graph.add_node(
+    graph.add_node("start_booking", start_booking)
+    graph.add_node("get_full_name", get_full_name)
+    graph.add_node("get_car_number", get_car_number)
+    graph.add_node("get_reservation_start", get_reservation_start)
+    graph.add_node("get_reservation_end", get_reservation_end)
+    graph.add_node("date_range_error", date_range_error)
+    graph.add_node("confirm_booking", confirm_booking)
+    graph.add_node("cancel_booking", cancel_booking)
+    graph.add_node("finish_booking", finish_booking)
+    graph.add_node(
         "notify_administrator",
         notify_administrator,
         retry_policy=RetryPolicy(max_attempts=3),
     )
 
-    booking_graph.add_edge(START, "start_booking")
-    booking_graph.add_edge("start_booking", "get_full_name")
+    graph.add_edge(START, "start_booking")
+    graph.add_edge("start_booking", "get_full_name")
     for node_name in ["get_full_name", "get_car_number", "get_reservation_start"]:
-        booking_graph.add_conditional_edges(
+        graph.add_conditional_edges(
             node_name,
             route_node_input,
             {
@@ -283,11 +285,11 @@ def get_booking_graph():
                 "retry": node_name,
             },
         )
-    booking_graph.add_conditional_edges("confirm_booking", route_booking_decision)
-    booking_graph.add_conditional_edges("get_reservation_end", validate_reservation_end)
-    booking_graph.add_edge("date_range_error", "get_reservation_start")
-    booking_graph.add_edge("finish_booking", "notify_administrator")
-    booking_graph.add_edge("notify_administrator", END)
-    booking_graph.add_edge("cancel_booking", END)
+    graph.add_conditional_edges("confirm_booking", route_booking_decision)
+    graph.add_conditional_edges("get_reservation_end", validate_reservation_end)
+    graph.add_edge("date_range_error", "get_reservation_start")
+    graph.add_edge("finish_booking", "notify_administrator")
+    graph.add_edge("notify_administrator", END)
+    graph.add_edge("cancel_booking", END)
 
-    return booking_graph
+    return graph

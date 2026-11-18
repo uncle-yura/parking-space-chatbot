@@ -7,13 +7,13 @@ from langgraph.graph.state import RunnableConfig
 from langgraph.types import Command
 from presidio_analyzer import AnalyzerEngine
 
-from app.graphs.rag_graph import get_rag_graph
+from app.graphs.rag_graph import build_rag_graph
 from app.graphs.utils import RagGraphContextSchema
 from app.services.embeddings import OllamaEmbeddingsService
 from app.services.llm_chat import OllamaLLMService
 from app.services.sql_service import SqlService
 from app.services.weaviate_vectorstore import WeaviateService
-from app.tools.booking_tools import get_booking_status
+from app.tools.booking_tool import get_booking_status
 
 POLL_INTERVAL_SECONDS = 5
 
@@ -70,7 +70,7 @@ async def main():
     )
 
     async with sql_service.async_checkpointer() as cp:
-        graph = get_rag_graph().compile(checkpointer=cp)
+        graph = build_rag_graph().compile(checkpointer=cp)
         print("Chat started. Type 'exit' to quit.\n")
         polling_jobs: dict[UUID, tuple[asyncio.Task, asyncio.Event]] = {}
 

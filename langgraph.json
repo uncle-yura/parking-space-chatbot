@@ -1,9 +1,10 @@
 {
   "dependencies": ["."],
   "graphs": {
-    "rag_graph": "./app/graphs/rag_graph.py:get_rag_graph",
-    "booking_graph": "./app/graphs/booking_graph.py:get_booking_graph",
-    "administrator_graph": "./app/graphs/administrator_graph.py:get_administrator_graph"
+    "rag_graph": "./app/graphs/rag_graph.py:build_rag_graph",
+    "booking_graph": "./app/graphs/booking_graph.py:build_booking_graph",
+    "administrator_graph": "./app/graphs/administrator_graph.py:build_administrator_graph",
+    "booking_review_graph": "./app/graphs/booking_review_graph.py:build_booking_review_graph"
   },
   "env": "./.env"
 }

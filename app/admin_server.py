@@ -1,4 +1,3 @@
-import asyncio
 import logging
 import os
 import secrets
@@ -7,8 +6,9 @@ from uuid import UUID
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-from app.graphs.administrator_graph import get_administrator_graph
+from app.graphs.administrator_graph import AdministratorState, build_administrator_graph
 from app.graphs.utils import AdministratorGraphContextSchema
+from app.services.llm_chat import OllamaLLMService
 from app.services.sql_service import SqlService
 
 logger = logging.getLogger(__name__)
@@ -17,14 +17,16 @@ bearer_scheme = HTTPBearer(auto_error=False)
 bearer_dependency = Depends(bearer_scheme)
 
 
-def _process_pending_bookings() -> None:
-    graph = get_administrator_graph().compile()
-    graph.invoke({}, context=AdministratorGraphContextSchema(sql_service=SqlService()))
-
-
 async def _run_processor() -> None:
     try:
-        await asyncio.to_thread(_process_pending_bookings)
+        graph = await build_administrator_graph()
+        state = await graph.compile().ainvoke(
+            AdministratorState(messages=[], pending=[], processed=[]),
+            context=AdministratorGraphContextSchema(
+                sql_service=SqlService(), llm=OllamaLLMService().llm
+            ),
+        )
+        logger.info(state)
     except Exception:
         logger.exception("Background reservation processing failed")
 

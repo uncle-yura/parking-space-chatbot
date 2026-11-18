@@ -1,8 +1,10 @@
+import json
 from datetime import datetime
+from uuid import UUID
 
 from langchain.tools import ToolRuntime, tool
 
-from app.graphs.utils import RagGraphContextSchema
+from app.graphs.utils import AdministratorGraphContextSchema, RagGraphContextSchema
 
 
 @tool
@@ -74,3 +76,45 @@ def get_working_hours(runtime: ToolRuntime[RagGraphContextSchema]) -> str:
         )
         blocks.append(f"  PARKING: {day_label} — {r['start_time']} to {r['end_time']}")
     return "\n".join(blocks)
+
+
+@tool
+def approve_reservation(runtime: ToolRuntime[AdministratorGraphContextSchema]) -> str:
+    """Approve this valid reservation if an available parking space can be assigned."""
+    booking = runtime.state.get("booking")
+    if not booking:
+        raise ValueError("Approval tool requires a booking in graph state.")
+
+    name = booking.get("customer_name")
+    car_number = booking.get("car_number")
+    start_at = booking.get("start_at")
+    end_at = booking.get("end_at")
+    invalid = (
+        not isinstance(name, str)
+        or not name.strip()
+        or not isinstance(car_number, str)
+        or not car_number.strip()
+        or not isinstance(start_at, datetime)
+        or not isinstance(end_at, datetime)
+        or end_at <= start_at
+    )
+    sql_service = runtime.context.sql_service
+    booking_id = UUID(str(booking["id"]))
+    if invalid:
+        result = sql_service.reject_pending_booking(booking_id)
+        return json.dumps(result or {"status": "unchanged"}, default=str)
+
+    result = sql_service.process_pending_booking(booking_id)
+    return json.dumps(result or {"status": "unchanged"}, default=str)
+
+
+@tool
+def reject_reservation(runtime: ToolRuntime[AdministratorGraphContextSchema]) -> str:
+    """Reject this pending reservation when its request data is invalid."""
+    booking = runtime.state.get("booking")
+    if not booking:
+        raise ValueError("Rejection tool requires a booking in graph state.")
+    result = runtime.context.sql_service.reject_pending_booking(
+        UUID(str(booking["id"]))
+    )
+    return json.dumps(result or {"status": "unchanged"}, default=str)

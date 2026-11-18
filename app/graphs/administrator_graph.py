@@ -1,50 +1,43 @@
-from typing import TypedDict
+import operator
+from typing import Annotated, Literal
 
-from langchain_core.messages import AIMessage
-from langgraph.graph import END, START, StateGraph
+from langgraph.graph import END, START, MessagesState, StateGraph
 from langgraph.runtime import Runtime
+from langgraph.types import Send
 
+from app.graphs.booking_review_graph import build_booking_review_graph
 from app.graphs.utils import AdministratorGraphContextSchema
 
 
-class AdministratorState(TypedDict, total=False):
-    processed: list[dict]
-    messages: list[AIMessage]
+class AdministratorState(MessagesState, total=False):
+    pending: list[dict]
+    processed: Annotated[list[dict], operator.add]
 
 
-def process_pending_bookings(
+def gather_pending_bookings(
     state: AdministratorState, runtime: Runtime[AdministratorGraphContextSchema]
 ):
-    sql_service = runtime.context.sql_service
-    pending = sql_service.get_pending_bookings()
-    processed = []
-
-    for booking in pending:
-        result = sql_service.process_pending_booking(booking["id"])
-        if result is not None:
-            processed.append({**booking, **result})
-
-    if not processed:
-        message = "There are no pending reservation requests."
-    else:
-        outcomes = []
-        for booking in processed:
-            if booking["status"] == "approved":
-                outcomes.append(
-                    f"Reservation {booking['id']} approved; assigned {booking['lot_identifier']}."
-                )
-            else:
-                outcomes.append(
-                    f"Reservation {booking['id']} rejected; no parking space is available."
-                )
-        message = "\n".join(outcomes)
-
-    return {"processed": processed, "messages": [AIMessage(content=message)]}
+    return {"pending": runtime.context.sql_service.claim_pending_bookings()}
 
 
-def get_administrator_graph():
-    graph = StateGraph(AdministratorState, context_schema=AdministratorGraphContextSchema)
-    graph.add_node("process_pending_bookings", process_pending_bookings)
-    graph.add_edge(START, "process_pending_bookings")
-    graph.add_edge("process_pending_bookings", END)
+def dispatch_booking_agents(
+    state: AdministratorState,
+) -> list[Send] | Literal["__end__"]:
+    pending = state.get("pending", [])
+    if not pending:
+        return "__end__"
+    return [Send("review_booking", {"booking": booking}) for booking in pending]
+
+
+async def build_administrator_graph():
+    graph = StateGraph(
+        AdministratorState, context_schema=AdministratorGraphContextSchema
+    )
+
+    graph.add_node("gather_pending_bookings", gather_pending_bookings)
+    graph.add_node("review_booking", (await build_booking_review_graph()).compile())
+    graph.add_edge(START, "gather_pending_bookings")
+    graph.add_conditional_edges("gather_pending_bookings", dispatch_booking_agents)
+    graph.add_edge("review_booking", END)
+
     return graph

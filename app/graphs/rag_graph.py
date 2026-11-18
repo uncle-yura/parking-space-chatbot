@@ -11,15 +11,15 @@ from langgraph.pregel.main import BaseModel
 from langgraph.runtime import Runtime
 from presidio_analyzer import AnalyzerEngine
 
-from app.graphs.booking_graph import get_booking_graph
-from app.graphs.utils import RagGraphContextSchema
-from app.tools.booking_tools import get_booking_status, start_booking_process
-from app.tools.sql_search_tools import (
+from app.graphs.booking_graph import build_booking_graph
+from app.graphs.utils import RagGraphContextSchema, extract_last_message
+from app.tools.booking_tool import get_booking_status, start_booking_process
+from app.tools.sql_tools import (
     get_free_parking_lots,
     get_prices,
     get_working_hours,
 )
-from app.tools.vector_search_tools import vector_search
+from app.tools.vectorstore_tools import vector_search
 
 
 class RagGraphState(MessagesState, total=False):
@@ -98,23 +98,6 @@ def _analyze_text(
     ]
 
 
-def _extract_last_message(
-    state: list[AnyMessage] | dict[str, Any] | BaseModel,
-    messages_key: str = "messages",
-) -> AnyMessage:
-    if isinstance(state, list):
-        message = state[-1]
-    elif (isinstance(state, dict) and (messages := state.get(messages_key, []))) or (
-        messages := getattr(state, messages_key, [])
-    ):
-        message = messages[-1]
-    else:
-        msg = f"No messages found in input state to input_check: {state}"
-        raise ValueError(msg)
-
-    return message
-
-
 def pii_error(state: list[AnyMessage] | dict[str, Any] | BaseModel):
     return {
         "messages": [
@@ -127,27 +110,29 @@ def pii_error(state: list[AnyMessage] | dict[str, Any] | BaseModel):
 
 
 def input_check(
-    state: list[AnyMessage] | dict[str, Any] | BaseModel,
+    state: RagGraphState,
     runtime: Runtime[RagGraphContextSchema],
     messages_key: str = "messages",
 ) -> Literal["assistant", "pii_error"]:
-    message = _extract_last_message(state, messages_key)
+    message = extract_last_message(state, messages_key)
     if len(_analyze_text(str(message.content), runtime.context.pii_analyzer)) > 0:
         return "pii_error"
     return "assistant"
 
 
-def assistant(state: RagGraphState, runtime: Runtime[RagGraphContextSchema]):
+async def assistant(state: RagGraphState, runtime: Runtime[RagGraphContextSchema]):
     llm_with_tools = runtime.context.llm.bind_tools(TOOLS)
-    return {"messages": [llm_with_tools.invoke([SYSTEM_MESSAGE] + state["messages"])]}
+    return {
+        "messages": [await llm_with_tools.ainvoke([SYSTEM_MESSAGE] + state["messages"])]
+    }
 
 
 def tools_condition(
-    state: list[AnyMessage] | dict[str, Any] | BaseModel,
+    state: RagGraphState,
     runtime: Runtime[RagGraphContextSchema],
     messages_key: str = "messages",
 ) -> Literal["tools", "__end__", "pii_error", "booking"]:
-    ai_message = _extract_last_message(state, messages_key)
+    ai_message = extract_last_message(state, messages_key)
 
     if (
         hasattr(ai_message, "tool_calls")
@@ -172,19 +157,16 @@ def tools_condition(
     return "__end__"
 
 
-def get_rag_graph():
-    rag_graph = StateGraph(RagGraphState, context_schema=RagGraphContextSchema)
+def build_rag_graph():
+    graph = StateGraph(RagGraphState, context_schema=RagGraphContextSchema)
 
-    rag_graph.add_node("pii_error", pii_error)
-    rag_graph.add_node("assistant", assistant)
-    rag_graph.add_node(
-        "booking",
-        get_booking_graph().compile(),
-    )
-    rag_graph.add_node("tools", ToolNode(TOOLS))
-    rag_graph.add_conditional_edges(START, input_check)
-    rag_graph.add_conditional_edges("assistant", tools_condition)
-    rag_graph.add_edge("tools", "assistant")
-    rag_graph.add_edge("pii_error", END)
+    graph.add_node("pii_error", pii_error)
+    graph.add_node("assistant", assistant)
+    graph.add_node("booking", build_booking_graph().compile())
+    graph.add_node("tools", ToolNode(TOOLS))
+    graph.add_conditional_edges(START, input_check)
+    graph.add_conditional_edges("assistant", tools_condition)
+    graph.add_edge("tools", "assistant")
+    graph.add_edge("pii_error", END)
 
-    return rag_graph
+    return graph

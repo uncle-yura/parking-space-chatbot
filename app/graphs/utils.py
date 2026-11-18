@@ -1,8 +1,9 @@
 # from dataclasses import dataclass
-
 from langchain_core.embeddings import Embeddings
 from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_core.messages import AnyMessage
 from langchain_core.vectorstores import VectorStore
+from langgraph.graph import MessagesState
 from presidio_analyzer.analyzer_engine import AnalyzerEngine
 from pydantic import BaseModel, ConfigDict, model_validator
 
@@ -51,13 +52,31 @@ class RagGraphContextSchema(BaseModel):
 class AdministratorGraphContextSchema(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
+    llm: BaseChatModel
     sql_service: SqlService
 
-    # LangGraph Studio runs independently, so provide the SQL service when no
-    # runtime context was supplied by the caller.
     @model_validator(mode="before")
     @classmethod
     def fill_missing(cls, data):
-        if isinstance(data, dict) and not data.get("sql_service"):
-            data["sql_service"] = SqlService()
+        if isinstance(data, dict):
+            if not data.get("llm"):
+                data["llm"] = OllamaLLMService().llm
+            if not data.get("sql_service"):
+                data["sql_service"] = SqlService()
         return data
+
+
+def extract_last_message(
+    state: MessagesState,
+    messages_key: str = "messages",
+) -> AnyMessage:
+
+    if (isinstance(state, dict) and (messages := state.get(messages_key, []))) or (
+        messages := getattr(state, messages_key, [])
+    ):
+        message = messages[-1]
+    else:
+        msg = f"No messages found in input state to input_check: {state}"
+        raise ValueError(msg)
+
+    return message
