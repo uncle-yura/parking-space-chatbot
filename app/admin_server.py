@@ -8,7 +8,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from app.graphs.administrator_graph import AdministratorState, build_administrator_graph
 from app.graphs.utils import AdministratorGraphContextSchema
-from app.services.llm_chat import OllamaLLMService
+from app.services.llm_chat import LLMService
 from app.services.sql_service import SqlService
 
 logger = logging.getLogger(__name__)
@@ -23,7 +23,7 @@ async def _run_processor() -> None:
         state = await graph.compile().ainvoke(
             AdministratorState(messages=[], pending=[], processed=[]),
             context=AdministratorGraphContextSchema(
-                sql_service=SqlService(), llm=OllamaLLMService().llm
+                sql_service=SqlService(), llm=LLMService().llm
             ),
         )
         logger.info(state)

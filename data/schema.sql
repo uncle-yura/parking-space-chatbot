@@ -41,8 +41,12 @@ CREATE TABLE IF NOT EXISTS bookings (
     lot_id          INTEGER REFERENCES parking_lots(id) ON DELETE SET NULL,
     customer_id     INTEGER,                 -- nullable = guest / walk-in
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
-    review_claimed_at TIMESTAMPTZ
+    review_claimed_at TIMESTAMPTZ,
+    mcp_saved_at    TIMESTAMPTZ
 );
 
 ALTER TABLE bookings
     ADD COLUMN IF NOT EXISTS review_claimed_at TIMESTAMPTZ;
+
+ALTER TABLE bookings
+    ADD COLUMN IF NOT EXISTS mcp_saved_at TIMESTAMPTZ;

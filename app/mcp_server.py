@@ -1,6 +1,5 @@
 import os
 import secrets
-from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, status
 from fastapi.responses import JSONResponse
@@ -10,13 +9,7 @@ from app.services.reservation_mcp import mcp
 mcp_app = mcp.http_app(path="/", transport="streamable-http")
 
 
-@asynccontextmanager
-async def lifespan(app):
-    async with mcp_app.router.lifespan_context(mcp_app):
-        yield
-
-
-app = FastAPI(title="Parking Reservation MCP Server", lifespan=lifespan)
+app = FastAPI(title="Parking Reservation MCP Server", lifespan=mcp_app.lifespan)
 app.mount("/mcp", mcp_app)
 
 

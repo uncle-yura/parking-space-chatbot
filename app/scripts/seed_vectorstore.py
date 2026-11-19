@@ -6,7 +6,7 @@ from pathlib import Path
 
 from langchain_core.documents.base import Document
 
-from app.services.embeddings import OllamaEmbeddingsService
+from app.services.embeddings import EmbeddingsService
 from app.services.weaviate_vectorstore import WeaviateService
 
 BASE_DIR = Path(__file__).resolve().parents[2]  # project root
@@ -36,7 +36,7 @@ def main():
         docs.append(doc)
 
     index_name = "ParkingKnowledge"
-    embeddings_service = OllamaEmbeddingsService()
+    embeddings_service = EmbeddingsService()
     weaviate_service = WeaviateService(
         index_name, embeddings=embeddings_service.embeddings
     )
@@ -52,7 +52,9 @@ def main():
     print("\n--- Verification: sample query ---")
     results = vector_store.similarity_search("How do I book a parking space?", k=3)
     for i, doc in enumerate(results, 1):
-        print(f" {dict(doc)}  [{i}] {doc.metadata['title']} ({doc.metadata['category']})")
+        print(
+            f" {dict(doc)}  [{i}] {doc.metadata['title']} ({doc.metadata['category']})"
+        )
 
 
 if __name__ == "__main__":

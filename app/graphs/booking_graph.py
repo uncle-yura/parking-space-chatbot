@@ -150,9 +150,11 @@ def date_range_error(state: BookingState):
 
 def validate_reservation_end(
     state: BookingState,
-) -> Literal["confirm_booking", "date_range_error", "get_reservation_end", "__end__"]:
+) -> Literal[
+    "confirm_booking", "date_range_error", "get_reservation_end", "cancel_booking"
+]:
     if state.get("cancelled"):
-        return "__end__"
+        return "cancel_booking"
 
     if state.get("error"):
         return "get_reservation_end"

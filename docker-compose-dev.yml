@@ -36,6 +36,92 @@ services:
     env_file:
       - .env
   
+  graph-tests:
+    profiles: ["tests"]
+    image: parking-chatbot-tests
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: tests
+    working_dir: /
+    entrypoint: ["python", "-m", "app.scripts.run_tests"]
+    command: ["all"]
+    restart: "no"
+    volumes:
+      - ./app:/app:ro
+      - ./tests:/tests:ro
+      - ./test.sh:/test.sh:ro
+      - ./data:/data:ro
+      - ./eval:/eval
+    env_file:
+      - .env
+    environment:
+      PYTHONUNBUFFERED: "1"
+      POSTGRES_HOST: test-postgres
+      POSTGRES_LOCATION: local
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: parking_chatbot_test
+      POSTGRES_TEST_DATABASE_URL: postgresql://test:test@test-postgres:5432/parking_chatbot_test
+      WEAVIATE_HOST: test-weaviate
+      WEAVIATE_LOCATION: local
+      WEAVIATE_PORT: "8080"
+      WEAVIATE_GRPC_PORT: "50051"
+      WEAVIATE_URL: ""
+      WEAVIATE_API_KEY: ""
+      LLM_PROVIDER: ${LLM_PROVIDER:-ollama}
+      EMBEDDINGS_PROVIDER: ${EMBEDDINGS_PROVIDER:-ollama}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_LLM_MODEL: ${OPENAI_LLM_MODEL:-gpt-4o-mini}
+      OPENAI_EMBEDDINGS_MODEL: ${OPENAI_EMBEDDINGS_MODEL:-text-embedding-3-small}
+      OLLAMA_LLM_MODEL: ${OLLAMA_LLM_MODEL:-qwen3.6:35b}
+      OLLAMA_EMBEDDINGS_MODEL:  ${OLLAMA_EMBEDDINGS_MODEL:-qwen3-embedding:8b}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      ADMIN_SERVER_URL: http://127.0.0.1:8000
+      ADMIN_SERVER_TOKEN: test-admin-token
+      RESERVATION_MCP_URL: http://127.0.0.1:8001/mcp
+      MCP_SERVER_TOKEN: test-mcp-token
+      RESERVATIONS_FILE: /eval/test_approved_reservations.txt
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      test-postgres:
+        condition: service_healthy
+      test-weaviate:
+        condition: service_healthy
+
+  test-postgres:
+    profiles: ["tests"]
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: parking_chatbot_test
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "test", "-d", "parking_chatbot_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  test-weaviate:
+    profiles: ["tests"]
+    image: cr.weaviate.io/semitechnologies/weaviate:1.40.4
+    command: ["--host", "0.0.0.0", "--port", "8080", "--scheme", "http"]
+    environment:
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"
+      PERSISTENCE_DATA_PATH: /var/lib/weaviate
+      CLUSTER_HOSTNAME: test-node
+    tmpfs:
+      - /var/lib/weaviate
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/v1/.well-known/ready"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   administrator-server:
     image: langgraph-api
     container_name: administrator-server

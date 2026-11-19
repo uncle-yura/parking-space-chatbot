@@ -1,143 +1,241 @@
 [
   {
     "id": "parking_overview",
-    "title": "What is a Parking Space and How Does It Work?",
+    "title": "What Can the Parking Chatbot Do?",
     "category": "general",
-    "tags": ["overview", "introduction"],
-    "content": "A parking space is a designated area for parking vehicles. Our platform connects drivers with available parking spaces in urban areas, allowing you to search, book, and pay for parking through the app. Whether you need a spot near a meeting, airport parking, or a monthly subscription at your residence, we make it simple and hassle-free."
+    "tags": ["overview", "capabilities", "assistant"],
+    "content": "The parking chatbot answers descriptive parking questions from a static knowledge base, retrieves prices and working hours from the database, counts available spaces, starts a guided reservation request, and checks the reservation submitted in the current conversation. It is a conversational assistant, not a map, payment application, or account-management portal."
   },
   {
     "id": "why_use_parking_app",
-    "title": "Why Use Our Parking App?",
+    "title": "Benefits and Limits of the Parking Assistant",
     "category": "general",
-    "tags": ["benefits", "features"],
-    "content": "Our app saves you time and money by guaranteeing a parking spot before you arrive. Key benefits include real-time availability, cashless payments, automated billing, reserved spots, flexible duration bookings, and detailed GPS navigation to your space. Thousands of drivers rely on us daily to avoid circling blocks or dealing with expired meters."
+    "tags": ["benefits", "expectations"],
+    "content": "The parking assistant brings parking explanations, database-backed information, and a guided reservation request into one conversation. Users can ask about prices, schedules, and availability without navigating separate screens. An availability check does not hold a space, and a submitted request is not guaranteed approval. There are no cashless payments, navigation, or automatic billing in this chat."
+  },
+  {
+    "id": "static_and_dynamic_information",
+    "title": "Static Knowledge Versus Current Database Information",
+    "category": "general",
+    "tags": ["sources", "knowledge", "database"],
+    "content": "Static knowledge explains parking concepts, chatbot capabilities, limitations, and fictional company background. Current prices, working hours, and availability come from dedicated database tools, not from descriptive articles. A company milestone or an example address in the knowledge base is not evidence of a live parking service, an available space, or a current rate."
+  },
+  {
+    "id": "current_prices",
+    "title": "Checking Current Parking Prices",
+    "category": "pricing",
+    "tags": ["prices", "hourly", "daily-cap"],
+    "content": "The assistant can retrieve the parking price effective now. The result includes the hourly rate and, when configured, a daily cap and maximum stay in hours. No fixed prices are maintained in these articles. Ask the assistant for current prices to query the database; retrieving a rate does not charge money, guarantee a quote, or create a reservation."
+  },
+  {
+    "id": "dated_prices",
+    "title": "Checking the Price Effective at a Specified Time",
+    "category": "pricing",
+    "tags": ["prices", "effective-date", "as-of"],
+    "content": "The price lookup accepts an optional ISO-8601 date and time to retrieve the rate effective at that moment. Users should supply an explicit date and time when asking about a different period. If no matching pricing record exists, the assistant reports that pricing data is unavailable rather than extrapolating a rate. This is an effective-date lookup, not a guaranteed future quote."
+  },
+  {
+    "id": "working_hours_lookup",
+    "title": "Recurring Opening Hours and Holiday Overrides",
+    "category": "hours",
+    "tags": ["opening", "closing", "holidays", "schedule"],
+    "content": "The assistant retrieves recurring weekly working hours and any dated holiday overrides from the database. A holiday override is a date-specific schedule rather than an additional weekly opening day. In the returned weekday numbering, 0 means Sunday and 6 means Saturday. The knowledge base does not promise round-the-clock opening; use the working-hours lookup for the configured schedule."
+  },
+  {
+    "id": "availability_now",
+    "title": "How Many Parking Spaces Are Available Now?",
+    "category": "availability",
+    "tags": ["available", "now", "count"],
+    "content": "The assistant can query the aggregate number of parking spaces available now without requiring a time interval. The count is based on database reservation records, not live camera or occupancy-sensor observations. It is not a list of individual spaces, a nearby-facility search, or a promise that the count will remain unchanged until a reservation is reviewed."
+  },
+  {
+    "id": "availability_interval",
+    "title": "Availability Throughout a Requested Interval",
+    "category": "availability",
+    "tags": ["interval", "start", "end", "duration"],
+    "content": "To check availability for a planned visit, provide both the start and end as explicit ISO-8601 datetimes. The end must be later than the start. The assistant counts spaces free throughout that interval, not just at arrival. A partial interval needs clarification. The result is aggregate availability and does not allow the user to select a particular numbered space."
+  },
+  {
+    "id": "availability_not_a_hold",
+    "title": "Does an Availability Check Hold a Space?",
+    "category": "availability",
+    "tags": ["hold", "guarantee", "concurrency"],
+    "content": "Checking availability does not hold, allocate, or reserve a space. Other reservation requests can change the available count between a lookup and administrator review. A pending request also does not mean that a space has been assigned. Only an approved reservation with a system-reported assigned space establishes an assignment in the booking system."
   },
   {
     "id": "how_it_works",
-    "title": "How Does the Parking Booking Process Work?",
+    "title": "Reservation Request Lifecycle",
     "category": "booking",
-    "tags": ["how-to", "process"],
-    "content": "Booking a parking space takes just three steps: First, open the app and enter your destination or browse nearby lots on the map. Second, choose an available space, select your desired dates and times, and confirm the booking. The parking spot is now reserved for you — receive a digital confirmation with directions and entry instructions."
+    "tags": ["process", "request", "review"],
+    "content": "To request parking, tell the assistant that you want to book. A guided workflow collects the required details and asks you to confirm them before submission. A submitted request begins as pending. A separate administrator process reviews it and may approve it with an assigned space or reject it. Confirming request details is not administrator approval."
   },
   {
     "id": "booking_steps_detail",
-    "title": "Step-by-Step Booking Guide",
+    "title": "Details Collected by the Guided Booking Workflow",
     "category": "booking",
-    "tags": ["tutorial", "how-to"],
-    "content": "Step 1: Search — Enter your destination address or enable location services to see nearby parking options. Step 2: Compare — View pricing, distance, space type (covered, outdoor, underground, EV-charging), and reviews for each lot. Step 3: Select Duration — Choose start and end times; hourly, daily, or multi-day bookings are all supported. Step 4: Reserve — Pay securely in the app with your saved credit card, debit card, Apple Pay, or Google Pay. You'll get an instant confirmation and digital parking pass."
+    "tags": ["steps", "name", "vehicle", "confirmation"],
+    "content": "The guided reservation workflow asks for the full name, car registration number, booking start time, and booking end time, in that order. It then shows the details for confirmation. Personal booking details belong in these dedicated prompts, not ordinary parking Q&A. There is no map selection, card-entry screen, account login, or immediate payment step."
   },
   {
-    "id": "payment_methods",
-    "title": "What Payment Methods Are Accepted?",
-    "category": "payment",
-    "tags": ["billing", "methods"],
-    "content": "We accept major credit cards (Visa, Mastercard, American Express), debit cards, Apple Pay, Google Pay, and PayPal. All transactions are encrypted and securely processed. You can manage your saved payment methods in the app under Profile > Payment Methods. A temporary hold may be placed on your card at the time of booking."
-  },
-  {
-    "id": "vehicle_types_supported",
-    "title": "What Types of Vehicles Can Park?",
-    "category": "parking-types",
-    "tags": ["vehicles", "accommodation"],
-    "content": "Our app supports standard passenger vehicles (sedans, SUVs, hatchbacks), compact cars, motorcycles, and electric vehicles. Some lots also accommodate larger vehicles such as vans or small trucks, but these are limited in number and may cost more. When browsing lots, the vehicle type filter lets you find only spaces that suit your vehicle."
-  },
-  {
-    "id": "ev_charging_parking",
-    "title": "Parking with Electric Vehicle Charging",
-    "category": "parking-types",
-    "tags": ["EV", "charging", "electric"],
-    "content": "Select parking locations offer EV charging stations, including Level 2 (standard) and Level 3 (fast DC) chargers. When searching for a lot, use the EV filter to find spaces with available chargers. The app will show you the charger type, charging rate per kWh or hour, and how many stalls have active chargers. Some lots allow free charging with extended park-and-pay."
-  },
-  {
-    "id": "covered_vs_outdoor_parking",
-    "title": "Covered vs Outdoor vs Underground Parking",
-    "category": "parking-types",
-    "tags": ["types", "space-options"],
-    "content": "We offer three main space types: Covered parking is sheltered under a structure, protecting your vehicle from rain, snow, and sun. Outdoor parking is in open-air lots or street-side spaces and is usually the most affordable option. Underground parking provides maximum security and climate protection, often located inside multi-level buildings. Each type is filterable in the app search."
-  },
-  {
-    "id": "parking_locations",
-    "title": "What Locations Do You Cover?",
-    "category": "location",
-    "tags": ["coverage", "areas"],
-    "content": "We currently operate in major metropolitan areas across the country, including city centers, airports, hospitals, university campuses, shopping districts, sports stadiums, and convention centers. Coverage is expanding monthly. Use the map view in the app to see available parking near any address or landmark. If your desired location isn't listed yet, you can request it to be added."
-  },
-  {
-    "id": "airport_parking",
-    "title": "Airport Parking Services",
-    "category": "location",
-    "tags": ["airport", "travel"],
-    "content": "We offer several types of airport parking: Park-and-Go lots near major terminals with free shuttle service every 10–15 minutes. Valet parking where you drop your car at the terminal and staff parks it for you — pick it up upon return. Long-term and economy lots for multi-day trips at discounted daily rates. EV charging stations are also available at select airport locations."
-  },
-  {
-    "id": "location_details_and_amenities",
-    "title": "What Details Are Available for Each Parking Lot?",
-    "category": "location",
-    "tags": ["amenities", "features"],
-    "content": "Each lot listing includes the exact address and GPS coordinates, distance from your search point, pricing per hour or day, available space type (covered/outdoor/underground), operating hours (24/7 or limited), security features (CCTV surveillance, on-site attendants, barrier gates, lighting), accessibility options (handicap spaces, EV chargers), and reviews from other users."
-  },
-  {
-    "id": "getting_directions",
-    "title": "How Do I Get Directions to My Parking Spot?",
+    "id": "booking_input_validation",
+    "title": "Booking Input Formats and Validation",
     "category": "booking",
-    "tags": ["navigation", "directions"],
-    "content": "After confirming your booking, the app provides turn-by-turn GPS navigation to the parking facility. You can use the built-in map or export directions to Apple Maps or Google Maps. Upon arrival, you will receive specific instructions such as gate codes, floor numbers, section markers, or QR code validation steps needed to enter and park."
+    "tags": ["validation", "format", "dates"],
+    "content": "Booking prompts accept a full name between 3 and 250 characters and a car registration number between 6 and 9 characters. Start and end times use YYYY-MM-DD HH:mm, for example 2030-06-15 09:30. The end must be later than the start. Invalid input prompts a retry. These format checks do not establish vehicle eligibility, legal identity, or a guarantee of approval."
   },
   {
-    "id": "lost_parking_pass",
-    "title": "I Can't Find My Parking Confirmation — What Do I Do?",
+    "id": "booking_confirmation_and_cancel",
+    "title": "Confirming or Abandoning an Unsubmitted Request",
     "category": "booking",
-    "tags": ["troubleshooting", "faq"],
-    "content": "Your parking confirmation is stored in the app under Bookings > Active. You can also find it in your email inbox from bookings@parking-chatbot.com. If you arrive at the lot without a visible confirmation, simply show your profile to the attendant — all reservations are linked to your account and vehicle license plate number."
+    "tags": ["approve", "reject", "cancel", "draft"],
+    "content": "During a booking input prompt, choose [cancel] to abandon the unsubmitted request. At the final confirmation prompt, [approve] submits the displayed details and [reject] abandons the request. These controls apply to the guided workflow before submission. They do not cancel an already submitted or approved reservation, and [approve] here does not mean administrator approval."
+  },
+  {
+    "id": "booking_status_lookup",
+    "title": "Checking the Reservation from This Conversation",
+    "category": "booking",
+    "tags": ["status", "conversation", "confirmation"],
+    "content": "Ask the assistant for the reservation status after submitting a request in the current conversation. The status tool uses the conversation's stored booking identifier; users do not need to paste an identifier or personal details. It cannot search booking history, another conversation, or another person's reservation. If this conversation has no submitted reservation, the tool reports that there is none to check."
+  },
+  {
+    "id": "booking_status_meanings",
+    "title": "Pending, Approved, and Rejected Reservations",
+    "category": "booking",
+    "tags": ["pending", "approved", "rejected", "assigned-space"],
+    "content": "Pending means the reservation request has not yet received a final review result. Approved means a space was assigned; the status response includes its identifier. Rejected means the request was not accepted; the customer status tool reports rejection because no space was available. A missing reservation or a temporarily unavailable status service must not be presented as approval or rejection."
+  },
+  {
+    "id": "reservation_changes",
+    "title": "Changing or Cancelling a Submitted Reservation",
+    "category": "booking",
+    "tags": ["modify", "reschedule", "cancel", "submitted"],
+    "content": "The customer chatbot has no tool to edit dates, replace a car number, extend a stay, or cancel a submitted or approved reservation. The cancellation option inside the guided form only abandons an unsubmitted request. Starting another request does not modify or cancel an earlier reservation. The assistant must not claim that a change or cancellation was performed."
   },
   {
     "id": "what_to_do_if_full",
-    "title": "What Happens if My Lot Is Full When I Arrive?",
+    "title": "Zero Availability and Rejected Requests",
     "category": "booking",
-    "tags": ["troubleshooting", "policy"],
-    "content": "When you book through our platform, your spot is reserved and guaranteed up to 30 minutes before the start time. If a lot shows as full in real-time, the app will immediately suggest nearby alternative lots with comparable pricing. You can rebook instantly with one tap. In rare cases where this happens at check-in, contact support for compensation."
+    "tags": ["full", "zero", "alternatives"],
+    "content": "A successful availability query returning zero means no spaces are free in the database for the requested interval. The user can supply a different interval for another count, but the chatbot cannot find nearby alternatives or automatically rebook elsewhere. An unavailable database or missing result is not a zero count. There is no compensation, arrival guarantee, or automatic replacement service in this chat."
   },
   {
-    "id": "safety_and_security",
-    "title": "Is My Vehicle Safe While Parked?",
-    "category": "general",
-    "tags": ["safety", "security"],
-    "content": "Security is a top priority. All partner lots are vetted for safety and include features such as 24/7 CCTV surveillance, well-lit areas, on-site attendants during operating hours, secure barrier/gate systems, and regular patrols where applicable. High-risk areas have enhanced security protocols. Users can read safety reviews from other parkers before choosing a lot."
-  },
-  {
-    "id": "accessibility_parking",
-    "title": "Parking for Disabled Drivers and Passengers",
-    "category": "general",
-    "tags": ["accessibility", "ada"],
-    "content": "Most of our partner lots include ADA-compliant handicap parking spaces with wider stalls and ramp access. When searching, you can filter for accessible spots to ensure availability in advance. Some lots also offer valet services specifically designed for passengers with limited mobility. A valid disability parking permit may be required — check individual lot details for requirements."
-  },
-  {
-    "id": "lost_in_lot_help",
-    "title": "I'm Having Trouble Finding My Parking Spot — Help!",
-    "category": "booking",
-    "tags": ["troubleshooting", "navigation"],
-    "content": "First, check your active booking for the lot name, floor level, and section code. Most lots display a parking pass QR code with facility details. Many facilities have marked entry points and signage — look for your booked lot's branding. If you are still lost, tap 'Need Help' in the app to connect with on-site support via call or chat."
+    "id": "payment_methods",
+    "title": "Payments and Saved Payment Methods Are Not Supported",
+    "category": "payment",
+    "tags": ["cards", "wallets", "payment", "billing"],
+    "content": "This chatbot does not process payments, accept credit or debit cards, connect digital wallets, store payment methods, or place card holds. It can retrieve parking rates, but a rate lookup and a reservation request are not payment transactions. No payment-method menu or billing profile is available. Do not share card details in the conversation."
   },
   {
     "id": "receipts_and_invoices",
-    "title": "How Do I Get a Receipt or Invoice?",
+    "title": "Receipts, Invoices, and Refunds",
     "category": "payment",
-    "tags": ["billing", "receipts"],
-    "content": "After each payment, a digital receipt is generated and sent to your email. To access it later, go to Bookings > History > Select the booking > View Receipt. Invoices for business expenses can be generated with company details added under Profile > Invoice Settings. PDF copies are also available for download directly from the app."
+    "tags": ["receipt", "invoice", "refund", "pdf"],
+    "content": "The chatbot cannot generate or email receipts, create business invoices, download billing PDFs, or issue refunds because it has no payment or invoicing tools. Reservation status is not proof of payment. No automatic email receipt, invoice-settings page, or refund workflow is implemented in the customer conversation."
   },
   {
     "id": "corporate_parking",
-    "title": "Corporate and Business Parking Accounts",
+    "title": "Corporate Accounts and Subscription Limits",
     "category": "general",
-    "tags": ["corporate", "business"],
-    "content": "Businesses can set up corporate parking accounts with centralized billing, employee access management, and volume discounts. Employees book through their own accounts but charges are billed to the company invoice. Monthly consolidated billing and detailed expense reports are provided. Contact our business team for custom pricing and setup."
+    "tags": ["corporate", "subscription", "employees", "discounts"],
+    "content": "Corporate account administration, employee permissions, consolidated billing, expense reports, volume discounts, and recurring monthly subscriptions are not supported by this chatbot. The available customer workflow submits an individual reservation request with a start and end time. Company background articles do not establish enterprise product features or commercial offers."
+  },
+  {
+    "id": "vehicle_types_supported",
+    "title": "Vehicle Suitability and Vehicle-Type Filters",
+    "category": "parking-types",
+    "tags": ["vehicles", "motorcycles", "vans", "height"],
+    "content": "The guided request records a car registration number but does not evaluate vehicle dimensions or eligibility. The chatbot has no vehicle-type filter or verified clearance data for motorcycles, SUVs, vans, trucks, or oversized vehicles. A free-space count does not establish whether a particular vehicle fits. The assistant cannot guarantee vehicle accommodation from this dataset."
+  },
+  {
+    "id": "ev_charging_parking",
+    "title": "Electric Vehicle Charging Information",
+    "category": "parking-types",
+    "tags": ["EV", "charging", "connectors"],
+    "content": "EV charging is a general parking topic, not an implemented chatbot service. The assistant cannot filter for chargers, check charger occupancy, report live connector availability or charging tariffs, or reserve a charging bay. No verified facility-specific charger inventory is supplied in this knowledge base. A standard parking approval does not guarantee charging access."
+  },
+  {
+    "id": "covered_vs_outdoor_parking",
+    "title": "Covered, Outdoor, and Underground Parking Concepts",
+    "category": "parking-types",
+    "tags": ["covered", "outdoor", "underground", "definitions"],
+    "content": "In general parking terminology, covered parking has overhead shelter, outdoor parking is open to the air, and underground parking is below ground level. These definitions are educational, not an inventory of offered facilities. The chatbot cannot filter, compare prices by structure type, or guarantee that an assigned space has any of these characteristics. Underground parking alone does not establish security or climate control."
+  },
+  {
+    "id": "parking_locations",
+    "title": "Geographic Coverage and Nearby Search Limits",
+    "category": "location",
+    "tags": ["coverage", "nearby", "map", "destination"],
+    "content": "The chatbot has no verified directory of operating cities or facility addresses and no nearby search, map, distance comparison, or location-request submission tool. Users should not share their location to obtain a nearby recommendation. A static article may contain a documented address, but this dataset's Demo Garage address is explicitly fictional and does not establish real-world coverage."
+  },
+  {
+    "id": "airport_parking",
+    "title": "Airport Parking and Shuttle Service Limits",
+    "category": "location",
+    "tags": ["airport", "shuttle", "valet", "travel"],
+    "content": "Airport parking, valet parking, terminal drop-off, and shuttle transfers are not verified services in this dataset. The chatbot cannot locate airport facilities, book shuttles, check transfer timetables, or promise discounted long-term airport rates. A reservation for a time interval does not imply an airport location, transport service, or special travel package."
+  },
+  {
+    "id": "location_details_and_amenities",
+    "title": "Facility Details Not Provided by the Database Tools",
+    "category": "location",
+    "tags": ["amenities", "coordinates", "reviews", "facility"],
+    "content": "The customer database tools expose rates, schedules, and aggregate availability, not detailed facility listings. They do not return GPS coordinates, distance, floor plans, reviews, photographs, surveillance coverage, accessibility inventory, or charger specifications. An assigned space identifier in an approved status response is not a facility address or a verified description of amenities."
+  },
+  {
+    "id": "getting_directions",
+    "title": "Directions, Entry Codes, and Digital Passes",
+    "category": "booking",
+    "tags": ["navigation", "directions", "QR", "entry"],
+    "content": "The chatbot does not provide turn-by-turn navigation, map exports, gate codes, QR passes, floor numbers, or entry instructions. An approved reservation may report an assigned space identifier, but that identifier is not a digital access credential. Static fictional addresses must not be presented as real destinations or directions to a booked space."
+  },
+  {
+    "id": "lost_parking_pass",
+    "title": "Missing Confirmation and Reservation Lookup",
+    "category": "booking",
+    "tags": ["confirmation", "missing", "email", "history"],
+    "content": "If a request was submitted in the current conversation, ask the assistant to check its status. This chat has no Bookings > Active page, email confirmation delivery, account profile, or searchable reservation history. It cannot recover reservations from another conversation using a name or registration number, and it does not issue parking passes."
+  },
+  {
+    "id": "lost_in_lot_help",
+    "title": "Finding a Space Inside a Facility",
+    "category": "booking",
+    "tags": ["lost", "floor", "section", "on-site"],
+    "content": "The assistant cannot locate a vehicle or guide a driver through a facility. It has no indoor map, floor-level lookup, section-code lookup, or connection to an on-site attendant. For an approved reservation created in this conversation, the supported action is to retrieve the assigned space identifier through the booking status tool, without inventing entry or wayfinding details."
+  },
+  {
+    "id": "safety_and_security",
+    "title": "Facility Security Claims and General Precautions",
+    "category": "general",
+    "tags": ["safety", "CCTV", "security", "patrols"],
+    "content": "No verified CCTV, patrol, attendant, lighting, insurance, or barrier inventory is available for parking facilities in this dataset. The chatbot cannot guarantee vehicle safety or claim all facilities have been vetted. General precautions include locking the vehicle and keeping valuables out of sight; these precautions are not a facility-specific security assessment or an insurance promise."
+  },
+  {
+    "id": "accessibility_parking",
+    "title": "Accessible Parking Information and Limits",
+    "category": "general",
+    "tags": ["accessibility", "disabled", "permit", "ramp"],
+    "content": "Accessible spaces may generally have wider bays and step-free routes, and local permit requirements vary. This is background information, not a verified accessibility or legal compliance claim about a facility. The chatbot cannot filter accessible bays, verify ramp access, reserve a disability-specific space, or determine local permit rules from its current tools. An availability count is not an accessible-space count."
   },
   {
     "id": "support_and_contact",
-    "title": "How Do I Contact Customer Support?",
+    "title": "Support and Escalation Limits",
     "category": "general",
-    "tags": ["support", "contact"],
-    "content": "Customer support is available 24/7 through multiple channels: In-app live chat (Profile > Help & Support), email at support@parking-chatbot.com, and phone at 1-800-PARK-NOW. For urgent on-site issues, each active booking includes a direct line to the specific lot's management team. Average response time for live chat is under 2 minutes."
+    "tags": ["support", "contact", "human", "help"],
+    "content": "The chatbot can explain its supported features and report tool limitations, but it has no human-agent transfer, support-ticket creation, facility contact directory, phone service, or email-sending tool. No verified support email, telephone number, operating hours, or response-time commitment is supplied here. It must not claim that a support team has been contacted."
+  },
+  {
+    "id": "privacy_and_booking_data",
+    "title": "Personal Information and Booking Privacy",
+    "category": "privacy",
+    "tags": ["privacy", "personal-data", "booking"],
+    "content": "Ordinary parking Q&A is subject to private-information filtering. The dedicated booking workflow collects the required name and car registration number for the request. Users should not provide payment details or unrelated sensitive information. The customer status tool is restricted to the reservation stored in the current conversation and does not expose other users' booking records."
+  },
+  {
+    "id": "service_errors_and_missing_data",
+    "title": "Unavailable Tools and Missing Information",
+    "category": "general",
+    "tags": ["errors", "missing", "unavailable", "uncertainty"],
+    "content": "When a lookup fails or returns no matching data, the assistant should explain what is unavailable rather than invent a result. No pricing record does not mean free parking. A failed availability query does not mean the lot is full. A temporarily unavailable reservation status service does not establish whether a request is pending, approved, or rejected."
   },
   {
     "id": "synthetic_demo_location",
@@ -145,5 +243,110 @@
     "category": "location",
     "tags": ["synthetic", "demo", "address", "test-location"],
     "content": "TEST DATA — this is a fictional parking location for chatbot testing and is not a real facility. Demo Garage is listed at 42 Sample Street, Testville, ZZ 00000. This placeholder address is not suitable for navigation or real bookings. No real-world hours, pricing, amenities, or availability are defined for this demo location."
+  },
+  {
+    "id": "synthetic_company_identity",
+    "title": "Fictional Company Profile: Parkfolio Labs",
+    "category": "company",
+    "tags": ["synthetic", "company", "identity", "brand"],
+    "content": "SYNTHETIC COMPANY HISTORY — Parkfolio Labs is a fictional company created solely for this retrieval-testing dataset. Its invented business focuses on explaining parking information and studying reservation workflows. Company names, dates, financing events, and exchange references in this narrative are test fixtures, not claims about real businesses, real securities, or additional chatbot capabilities."
+  },
+  {
+    "id": "synthetic_company_founding",
+    "title": "Parkfolio Labs Founding in 2014",
+    "category": "company",
+    "tags": ["synthetic", "founding", "history", "2014"],
+    "content": "SYNTHETIC COMPANY HISTORY — In the fictional timeline, Parkfolio Labs was founded in 2014 as a research spin-out to study confusing parking information. Its first project was a glossary and a paper-based reservation experiment, not a consumer navigation or payment app. The founding year belongs only to this invented company narrative and is not a deployment date for the current chatbot."
+  },
+  {
+    "id": "synthetic_company_founder",
+    "title": "The Founding Organization: Curb Research Cooperative",
+    "category": "company",
+    "tags": ["synthetic", "founder", "cooperative", "origin"],
+    "content": "SYNTHETIC COMPANY HISTORY — The fictional founder of Parkfolio Labs is Curb Research Cooperative, an invented research organization rather than a named individual. The cooperative contributed the original parking terminology archive and a charter emphasizing clear explanations. No founder biography, private contact details, or real person's identity is part of this test fixture."
+  },
+  {
+    "id": "synthetic_company_mission",
+    "title": "Parkfolio Labs Mission and Editorial Values",
+    "category": "company",
+    "tags": ["synthetic", "mission", "values", "clarity"],
+    "content": "SYNTHETIC COMPANY HISTORY — Parkfolio Labs adopted the fictional mission 'Make parking information understandable before making promises.' Its editorial values are clarity, traceable sources, explicit uncertainty, and separation of educational examples from operational facts. This mission is background narrative, not a guarantee of space availability, service uptime, or a commercial service-level agreement."
+  },
+  {
+    "id": "synthetic_company_archive",
+    "title": "The 2016 Parking Terminology Archive",
+    "category": "company",
+    "tags": ["synthetic", "archive", "glossary", "2016"],
+    "content": "SYNTHETIC COMPANY HISTORY — In 2016, Parkfolio Labs released an invented terminology archive covering bays, recurring schedules, daily price caps, and reservation requests. The archive standardized definitions for internal training exercises. It contained no live facility directory, and publication did not introduce maps, payment processing, or the ability to reserve a particular type of space."
+  },
+  {
+    "id": "synthetic_company_research_pilot",
+    "title": "The 2018 Reservation Research Pilot",
+    "category": "company",
+    "tags": ["synthetic", "pilot", "research", "2018"],
+    "content": "SYNTHETIC COMPANY HISTORY — The fictional 2018 Parkfolio Labs research pilot compared how readers understood 'request submitted' and 'reservation approved.' Its invented conclusion was that separate status labels reduced confusion. The exercise used simulated requests, not real parking facilities, and created no arrival guarantee or automatic approval policy."
+  },
+  {
+    "id": "synthetic_company_seed_funding",
+    "title": "The Fictional 2019 Seed Funding Round",
+    "category": "company-finance",
+    "tags": ["synthetic", "funding", "seed", "2019"],
+    "content": "SYNTHETIC COMPANY HISTORY — In the invented timeline, Parkfolio Labs raised 2 million fictional credits in a 2019 seed round led by the fictional Mobility Methods Fund. The narrative allocation was documentation research and prototype evaluation. These credits are not a real currency, parking tariff, customer balance, payment option, or evidence that the chatbot offers investment services."
+  },
+  {
+    "id": "synthetic_company_rebrand",
+    "title": "The 2020 Clear Curb Brand Campaign",
+    "category": "company",
+    "tags": ["synthetic", "brand", "campaign", "2020"],
+    "content": "SYNTHETIC COMPANY HISTORY — Parkfolio Labs introduced the invented 'Clear Curb' editorial campaign in 2020. The campaign replaced ambiguous marketing phrases with plain-language explanations of requests, review, and assignment. Clear Curb was a communication theme, not a separate company, a new parking location, or a feature that supplied navigation or guaranteed reservations."
+  },
+  {
+    "id": "synthetic_company_ipo",
+    "title": "The Fictional 2021 Initial Public Offering",
+    "category": "company-finance",
+    "tags": ["synthetic", "IPO", "listing", "2021"],
+    "content": "SYNTHETIC COMPANY HISTORY — Parkfolio Labs completed an invented initial public offering in 2021 on the fictional Example Exchange. The narrative ticker is PKFL-DEMO. Neither the exchange listing nor the ticker represents a real security. This fixture supports questions about the company's fictional IPO year and venue, not stock purchases, live share prices, or investment advice."
+  },
+  {
+    "id": "synthetic_company_ipo_proceeds",
+    "title": "Planned Use of Fictional IPO Proceeds",
+    "category": "company-finance",
+    "tags": ["synthetic", "proceeds", "research", "allocation"],
+    "content": "SYNTHETIC COMPANY HISTORY — The fictional Parkfolio Labs IPO prospectus allocated 60 percent of proceeds to information-quality research, 25 percent to evaluation infrastructure, and 15 percent to editorial training. These invented proportions describe a test narrative, not audited financial statements, current spending, parking discounts, or a promise to add customer-facing features."
+  },
+  {
+    "id": "synthetic_company_annual_report",
+    "title": "The Fictional 2022 Annual Report",
+    "category": "company-finance",
+    "tags": ["synthetic", "annual-report", "2022", "metrics"],
+    "content": "SYNTHETIC COMPANY HISTORY — Parkfolio Labs' invented 2022 annual report discussed three nonfinancial measures: glossary coverage, explanation consistency, and reproducibility of retrieval tests. It deliberately reported no revenue, profit, share price, or real customer count. The report is a narrative fixture, not a downloadable investor document or evidence of an investor-relations tool in the chatbot."
+  },
+  {
+    "id": "synthetic_company_governance",
+    "title": "The Fictional Documentation Review Council",
+    "category": "company",
+    "tags": ["synthetic", "governance", "council", "review"],
+    "content": "SYNTHETIC COMPANY HISTORY — In 2023, the invented Documentation Review Council became responsible for checking Parkfolio Labs articles for unsupported claims and for labeling fictional examples. This council reviews narrative content only. It is not the operational administrator that reviews parking requests, cannot approve reservations, and is not a human support channel available through the chatbot."
+  },
+  {
+    "id": "synthetic_company_sustainability",
+    "title": "The Fictional Paperlight Documentation Program",
+    "category": "company",
+    "tags": ["synthetic", "sustainability", "paperlight", "2024"],
+    "content": "SYNTHETIC COMPANY HISTORY — Parkfolio Labs launched the fictional Paperlight program in 2024 to reuse training materials and reduce duplicate printed manuals in its imagined offices. No carbon reduction percentage or environmental certification is claimed. Paperlight does not imply EV charging infrastructure, greener parking inventory, customer carbon offsets, or environmental reporting features in the chatbot."
+  },
+  {
+    "id": "synthetic_company_training",
+    "title": "The Fictional Plain Language Workshop",
+    "category": "company",
+    "tags": ["synthetic", "training", "workshop", "education"],
+    "content": "SYNTHETIC COMPANY HISTORY — The invented Plain Language Workshop teaches Parkfolio Labs editors to distinguish a request, a review result, and a space assignment. Its exercises rewrite exaggerated promises into bounded explanations. This workshop is fictional company background, not a bookable course, customer support service, or new reservation workflow exposed by the chatbot."
+  },
+  {
+    "id": "synthetic_company_timeline",
+    "title": "Parkfolio Labs Milestone Timeline",
+    "category": "company",
+    "tags": ["synthetic", "timeline", "milestones", "chronology"],
+    "content": "SYNTHETIC COMPANY HISTORY — The invented Parkfolio Labs sequence is: founding in 2014, terminology archive in 2016, reservation research pilot in 2018, seed funding in 2019, Clear Curb campaign in 2020, Example Exchange IPO in 2021, annual report in 2022, Documentation Review Council in 2023, and Paperlight program in 2024. This chronology is fictional background, not a product release schedule or real corporate record."
   }
 ]

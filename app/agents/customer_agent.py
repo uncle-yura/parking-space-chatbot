@@ -9,8 +9,8 @@ from presidio_analyzer import AnalyzerEngine
 
 from app.graphs.rag_graph import build_rag_graph
 from app.graphs.utils import RagGraphContextSchema
-from app.services.embeddings import OllamaEmbeddingsService
-from app.services.llm_chat import OllamaLLMService
+from app.services.embeddings import EmbeddingsService
+from app.services.llm_chat import LLMService
 from app.services.sql_service import SqlService
 from app.services.weaviate_vectorstore import WeaviateService
 from app.tools.booking_tool import get_booking_status
@@ -53,8 +53,8 @@ async def main():
     config = RunnableConfig(configurable={"thread_id": thread_id})
 
     pii_analyzer = AnalyzerEngine()
-    llm_service = OllamaLLMService()
-    embeddings = OllamaEmbeddingsService().embeddings
+    llm_service = LLMService()
+    embeddings = EmbeddingsService().embeddings
     vectorstore = WeaviateService(
         index_name="ParkingKnowledge",
         embeddings=embeddings,
@@ -130,7 +130,7 @@ async def main():
 
                 messages = state.get("messages", [])
                 if messages and hasattr(messages[-1], "content"):
-                    print(f"\nAssistant: {messages[-1].content}\n")
+                    print(f"\nAssistant: {messages[-1].text}\n")
         finally:
             for task, stop_event in polling_jobs.values():
                 stop_event.set()

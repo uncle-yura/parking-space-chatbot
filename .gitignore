@@ -6,4 +6,10 @@ __pycache__/
 *.egg-info/
 .langgraph_api/
 .pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 data/approved_reservations.txt
+eval/graph_statistics.json
+eval/htmlcov/
+eval/test_approved_reservations.txt

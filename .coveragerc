@@ -1,0 +1,18 @@
+[run]
+source = app
+branch = True
+omit =
+    app/__init__.py
+    app/*/__init__.py
+    app/agents/*
+    app/scripts/*
+    app/services/embeddings.py
+    app/services/llm_chat.py
+    app/services/mcp_adapter.py
+    app/services/sql_service.py
+    app/services/weaviate_vectorstore.py
+    app/tools/sql_tools.py
+    app/tools/vectorstore_tools.py
+
+[report]
+show_missing = True

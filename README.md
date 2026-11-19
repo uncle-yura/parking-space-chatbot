@@ -14,14 +14,14 @@ docker compose --file docker-compose-dev.yml run --rm langgraph-api python -m ap
 # Build vector embeddings and populate the vector store
 docker compose --file docker-compose-dev.yml run --rm langgraph-api python -m app.scripts.seed_vectorstore
 
-# Run the customer agent CLI directly (outside Docker)
-python -m app.agents.customer_agent
+# Run the customer agent CLI directly
+docker compose --file docker-compose-dev.yml run --rm langgraph-api python -m app.agents.customer_agent
 ```
 
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/) v2+
-- [Ollama](https://ollama.ai/) running locally (or adjust `OLLAMA_BASE_URL` in `.env`)
+- [Ollama](https://ollama.ai/) running locally, or an OpenAI API key
 
 ## Environment Variables
 
@@ -43,12 +43,33 @@ Generate a token with `python -c 'import secrets; print(secrets.token_urlsafe(32
 | `ADMIN_SERVER_URL` | `http://administrator-server:8000` | Internal administrator service URL |
 | `ADMIN_SERVER_TOKEN` | (required) | Bearer token for RAG-to-administrator requests |
 | `MCP_SERVER_TOKEN` | (required) | Separate bearer token for administrator-to-MCP requests |
+| `LLM_PROVIDER` | `ollama` | Chat provider: `ollama` or `openai` |
+| `LLM_TEMPERATURE` | (unset) | Optional numeric chat temperature; omitted when unset or empty. Set only for models that support it. |
+| `EMBEDDINGS_PROVIDER` | `ollama` | Embeddings provider, selected independently |
+| `OPENAI_API_KEY` | (required for OpenAI) | OpenAI API key |
+| `OPENAI_LLM_MODEL` | `gpt-4o-mini` | OpenAI chat model |
+| `OPENAI_EMBEDDINGS_MODEL` | `text-embedding-3-small` | OpenAI embeddings model |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama API endpoint |
 | `OLLAMA_LLM_MODEL` | `qwen3.6:35b` | Model used for chat/inference |
 | `OLLAMA_EMBEDDINGS_MODEL` | `qwen3-embedding:8b` | Model used for embedding generation |
 | `WEAVIATE_HOST` | `localhost` | Weaviate hostname |
+| `WEAVIATE_LOCATION` | auto | Optional trace tag override: `local` or `external` |
 | `WEAVIATE_PORT` | `8080` | Weaviate HTTP port |
 | `WEAVIATE_GRPC_PORT` | `50051` | Weaviate gRPC port |
+
+To use OpenAI, set in `.env`:
+
+```dotenv
+LLM_PROVIDER=openai
+EMBEDDINGS_PROVIDER=openai
+OPENAI_API_KEY=your-key
+```
+
+Providers can be mixed. OpenAI requests are paid and send chat/tool data or
+embedding inputs to OpenAI. After changing the embeddings provider/model,
+rebuild the vector index with `app.scripts.seed_vectorstore` before querying it;
+stored vectors must use the same model as query vectors. Rebuild Docker images
+after updating dependencies.
 
 ## Project Structure
 
@@ -93,6 +114,32 @@ Generate a token with `python -c 'import secrets; print(secrets.token_urlsafe(32
 
 ## Development
 
+### Tests and Evaluations
+
+```bash
+# Build once; repeat only after changing dependencies or Dockerfile
+docker compose --file docker-compose-dev.yml build graph-tests
+
+# All tests + retrieval eval + graph/MCP scenarios; stop test databases on exit
+sh test.sh all
+
+# All pytest tests, including PostgreSQL integration tests and coverage
+sh test.sh pytest
+
+# One test file or test case
+sh test.sh pytest tests/test_booking_workflow.py
+sh test.sh pytest -k test_booking_graph_retries
+
+# PostgreSQL integration tests only
+sh test.sh pytest -m integration
+
+# Retrieval evaluation only
+sh test.sh retrieval
+
+# Graph/MCP scenarios only
+sh test.sh graphs --repeat 3
+```
+
 ### Running the Dev Server
 
 The `langgraph dev` server auto-reloads code changes (hot-reload via volume mount). After starting:
@@ -120,7 +167,7 @@ The PostgreSQL database uses the following tables:
 - **working_hours** — Recurring weekly schedules + holiday overrides
 - **bookings** — Customer parking reservations with UUID primary keys (status: pending → approved/rejected), including a lease timestamp for concurrent administrator claims
 
-See [data/schema.sql](data/schema.sql) and [data/seed.sql](data/seed.sql) for full definitions. For an existing database, apply `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS review_claimed_at TIMESTAMPTZ;` before deploying the claim-based administrator workflow.
+See [data/schema.sql](data/schema.sql) and [data/seed.sql](data/seed.sql) for full definitions. For an existing database, apply `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS review_claimed_at TIMESTAMPTZ;` and `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS mcp_saved_at TIMESTAMPTZ;` before deploying the claim-based administrator workflow. Approved bookings whose MCP write has not been marked complete are reclaimed by later administrator runs; file writes are idempotent for the same reservation details.
 
 ## Stopping Services
 

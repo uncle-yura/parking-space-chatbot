@@ -1,173 +1,881 @@
 {
   "metrics": {
-    "recall_at_3": 0.8809523809523809,
-    "precision_at_3": 0.3333333333333333,
-    "mrr": 0.888888888888889,
-    "retrieval_latency_ms": 105.171041667442,
-    "retrieval_latency_p95_ms": 64.39093500375748
+    "recall_at_3": 0.9777777777777777,
+    "precision_at_3": 0.328395061728395,
+    "mrr": 0.928395061728395,
+    "retrieval_latency_ms": 43.19521083671134,
+    "retrieval_latency_p95_ms": 49.696993999532424
   },
   "results": [
     {
-      "question": "What does the parking platform help drivers do?",
+      "question": "What kinds of tasks can the parking chatbot handle in a conversation?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "parking_overview"
+      ],
+      "retrieved_doc_ids": [
+        "why_use_parking_app",
+        "parking_overview",
+        "payment_methods"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 50.149496004451066,
+      "error": ""
+    },
+    {
+      "question": "Is this assistant a parking information chatbot or an account-management portal?",
       "category": "general",
       "relevant_doc_ids": [
         "parking_overview"
       ],
       "retrieved_doc_ids": [
         "parking_overview",
-        "lost_in_lot_help",
-        "why_use_parking_app"
+        "why_use_parking_app",
+        "payment_methods"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 2608.7949560023844,
+      "retrieval_latency_ms": 44.23354999744333,
       "error": ""
     },
     {
-      "question": "Can I reserve a parking space before I reach my destination?",
+      "question": "Can the chatbot both explain parking topics and start a guided reservation request?",
       "category": "general",
       "relevant_doc_ids": [
-        "why_use_parking_app",
         "parking_overview"
       ],
       "retrieved_doc_ids": [
+        "why_use_parking_app",
         "how_it_works",
-        "lost_parking_pass",
-        "what_to_do_if_full"
+        "parking_overview"
       ],
-      "recall_at_3": 0.0,
-      "precision_at_3": 0.0,
-      "mrr": 0.0,
-      "retrieval_latency_ms": 48.89417899539694,
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "retrieval_latency_ms": 46.09864200028824,
       "error": ""
     },
     {
-      "question": "What are the main advantages of using the app instead of looking for street parking?",
+      "question": "Why use the parking assistant instead of navigating separate information screens?",
       "category": "general",
       "relevant_doc_ids": [
         "why_use_parking_app"
       ],
       "retrieved_doc_ids": [
         "why_use_parking_app",
-        "parking_overview",
+        "privacy_and_booking_data",
         "how_it_works"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 72.53266600309871,
+      "retrieval_latency_ms": 44.00638300285209,
       "error": ""
     },
     {
-      "question": "Does the app provide navigation to the parking space?",
+      "question": "What expectations should I have about availability checks and request approval when using this assistant?",
       "category": "general",
       "relevant_doc_ids": [
+        "why_use_parking_app"
+      ],
+      "retrieved_doc_ids": [
         "why_use_parking_app",
-        "getting_directions"
-      ],
-      "retrieved_doc_ids": [
-        "getting_directions",
-        "how_it_works",
-        "parking_overview"
-      ],
-      "recall_at_3": 0.5,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 41.23948900087271,
-      "error": ""
-    },
-    {
-      "question": "How do I find a parking option near a place I want to visit?",
-      "category": "booking",
-      "relevant_doc_ids": [
-        "how_it_works",
-        "booking_steps_detail"
-      ],
-      "retrieved_doc_ids": [
-        "how_it_works",
-        "parking_overview",
+        "availability_not_a_hold",
         "lost_parking_pass"
       ],
-      "recall_at_3": 0.5,
+      "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 41.290029999800026,
+      "retrieval_latency_ms": 43.53542199532967,
       "error": ""
     },
     {
-      "question": "What steps do I follow to book a parking spot?",
-      "category": "booking",
+      "question": "Does the convenience of this parking chat include cashless payments or automatic billing?",
+      "category": "general",
       "relevant_doc_ids": [
-        "how_it_works",
-        "booking_steps_detail"
+        "why_use_parking_app"
       ],
       "retrieved_doc_ids": [
-        "how_it_works",
-        "getting_directions",
-        "lost_parking_pass"
+        "why_use_parking_app",
+        "payment_methods",
+        "ev_charging_parking"
       ],
-      "recall_at_3": 0.5,
+      "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 38.80366100202082,
+      "retrieval_latency_ms": 45.06338699866319,
       "error": ""
     },
     {
-      "question": "Can I book a space for several days rather than just a few hours?",
-      "category": "booking",
+      "question": "Which parking information comes from static articles, and which requires database tools?",
+      "category": "general",
       "relevant_doc_ids": [
-        "booking_steps_detail"
+        "static_and_dynamic_information"
       ],
       "retrieved_doc_ids": [
-        "what_to_do_if_full",
-        "location_details_and_amenities",
-        "how_it_works"
-      ],
-      "recall_at_3": 0.0,
-      "precision_at_3": 0.0,
-      "mrr": 0.0,
-      "retrieval_latency_ms": 40.95707200031029,
-      "error": ""
-    },
-    {
-      "question": "What information can I compare before choosing a parking lot?",
-      "category": "booking",
-      "relevant_doc_ids": [
-        "booking_steps_detail",
+        "static_and_dynamic_information",
+        "why_use_parking_app",
         "location_details_and_amenities"
       ],
-      "retrieved_doc_ids": [
-        "location_details_and_amenities",
-        "lost_parking_pass",
-        "booking_steps_detail"
-      ],
       "recall_at_3": 1.0,
-      "precision_at_3": 0.6666666666666666,
+      "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 41.69707000255585,
+      "retrieval_latency_ms": 48.35690400068415,
       "error": ""
     },
     {
-      "question": "Which payment options can I use when booking?",
-      "category": "payment",
+      "question": "Why should a descriptive knowledge article not be used as the source of a current parking rate?",
+      "category": "general",
       "relevant_doc_ids": [
-        "payment_methods",
-        "booking_steps_detail"
+        "static_and_dynamic_information"
       ],
       "retrieved_doc_ids": [
-        "payment_methods",
-        "receipts_and_invoices",
-        "booking_steps_detail"
+        "static_and_dynamic_information",
+        "privacy_and_booking_data",
+        "why_use_parking_app"
       ],
       "recall_at_3": 1.0,
-      "precision_at_3": 0.6666666666666666,
+      "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 37.73953799827723,
+      "retrieval_latency_ms": 43.43437899660785,
       "error": ""
     },
     {
-      "question": "Are payments made through the app encrypted?",
+      "question": "Can a fictional company milestone in the knowledge base establish that a live parking service exists?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "static_and_dynamic_information"
+      ],
+      "retrieved_doc_ids": [
+        "static_and_dynamic_information",
+        "synthetic_company_identity",
+        "synthetic_company_mission"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 52.293548003945034,
+      "error": ""
+    },
+    {
+      "question": "What fields can the current parking price lookup return besides the hourly rate?",
+      "category": "pricing",
+      "relevant_doc_ids": [
+        "current_prices"
+      ],
+      "retrieved_doc_ids": [
+        "current_prices",
+        "payment_methods",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.38890600349987,
+      "error": ""
+    },
+    {
+      "question": "How does the assistant obtain the price effective now when the articles contain no fixed tariffs?",
+      "category": "pricing",
+      "relevant_doc_ids": [
+        "current_prices"
+      ],
+      "retrieved_doc_ids": [
+        "dated_prices",
+        "current_prices",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 44.495551999716554,
+      "error": ""
+    },
+    {
+      "question": "Does retrieving a parking rate charge me, guarantee a quote, or create a reservation?",
+      "category": "pricing",
+      "relevant_doc_ids": [
+        "current_prices"
+      ],
+      "retrieved_doc_ids": [
+        "current_prices",
+        "payment_methods",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 49.82228599692462,
+      "error": ""
+    },
+    {
+      "question": "What date and time format should I supply to look up the parking rate effective at a particular moment?",
+      "category": "pricing",
+      "relevant_doc_ids": [
+        "dated_prices"
+      ],
+      "retrieved_doc_ids": [
+        "dated_prices",
+        "payment_methods",
+        "current_prices"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.314831996918656,
+      "error": ""
+    },
+    {
+      "question": "What should the assistant report if no pricing record matches my requested date and time?",
+      "category": "pricing",
+      "relevant_doc_ids": [
+        "dated_prices"
+      ],
+      "retrieved_doc_ids": [
+        "dated_prices",
+        "service_errors_and_missing_data",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.356009006151,
+      "error": ""
+    },
+    {
+      "question": "Is an effective-date price lookup a guaranteed quote for a future visit?",
+      "category": "pricing",
+      "relevant_doc_ids": [
+        "dated_prices"
+      ],
+      "retrieved_doc_ids": [
+        "dated_prices",
+        "current_prices",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.60549600055674,
+      "error": ""
+    },
+    {
+      "question": "How do dated holiday overrides differ from recurring weekly opening hours in a schedule lookup?",
+      "category": "hours",
+      "relevant_doc_ids": [
+        "working_hours_lookup"
+      ],
+      "retrieved_doc_ids": [
+        "working_hours_lookup",
+        "availability_interval",
+        "dated_prices"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.920804000867065,
+      "error": ""
+    },
+    {
+      "question": "What do weekday numbers 0 and 6 mean in the returned working-hours schedule?",
+      "category": "hours",
+      "relevant_doc_ids": [
+        "working_hours_lookup"
+      ],
+      "retrieved_doc_ids": [
+        "working_hours_lookup",
+        "availability_interval",
+        "booking_input_validation"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.958553997275885,
+      "error": ""
+    },
+    {
+      "question": "Does the knowledge base promise 24-hour opening, or must the configured schedule be retrieved?",
+      "category": "hours",
+      "relevant_doc_ids": [
+        "working_hours_lookup"
+      ],
+      "retrieved_doc_ids": [
+        "working_hours_lookup",
+        "static_and_dynamic_information",
+        "availability_interval"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.48592099995585,
+      "error": ""
+    },
+    {
+      "question": "Can the assistant check aggregate availability now without asking me for a start and end time?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_now"
+      ],
+      "retrieved_doc_ids": [
+        "availability_interval",
+        "availability_now",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 43.54292099742452,
+      "error": ""
+    },
+    {
+      "question": "Is the current free-space count based on reservation records or live occupancy sensors?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_now"
+      ],
+      "retrieved_doc_ids": [
+        "availability_now",
+        "availability_not_a_hold",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.15741999744205,
+      "error": ""
+    },
+    {
+      "question": "Does the availability-now tool return individual spaces or nearby parking facilities?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_now"
+      ],
+      "retrieved_doc_ids": [
+        "availability_now",
+        "why_use_parking_app",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.575824001280125,
+      "error": ""
+    },
+    {
+      "question": "What inputs and datetime format are required to check parking availability for a planned visit?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_interval"
+      ],
+      "retrieved_doc_ids": [
+        "availability_interval",
+        "why_use_parking_app",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.4119579984108,
+      "error": ""
+    },
+    {
+      "question": "Does an interval availability check count spaces free for the entire stay or only at arrival?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_interval"
+      ],
+      "retrieved_doc_ids": [
+        "availability_interval",
+        "availability_not_a_hold",
+        "what_to_do_if_full"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.51803200127324,
+      "error": ""
+    },
+    {
+      "question": "If I provide only an arrival time for an interval check, does the assistant need clarification?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_interval"
+      ],
+      "retrieved_doc_ids": [
+        "availability_interval",
+        "booking_input_validation",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.21002999797929,
+      "error": ""
+    },
+    {
+      "question": "Does checking availability hold or allocate a space for me?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_not_a_hold"
+      ],
+      "retrieved_doc_ids": [
+        "availability_not_a_hold",
+        "availability_interval",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.191332002403215,
+      "error": ""
+    },
+    {
+      "question": "Why can the available-space count change between a lookup and administrator review?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_not_a_hold"
+      ],
+      "retrieved_doc_ids": [
+        "availability_not_a_hold",
+        "what_to_do_if_full",
+        "availability_now"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.0984929985716,
+      "error": ""
+    },
+    {
+      "question": "What establishes a space assignment in the booking system rather than merely a pending request?",
+      "category": "availability",
+      "relevant_doc_ids": [
+        "availability_not_a_hold"
+      ],
+      "retrieved_doc_ids": [
+        "availability_not_a_hold",
+        "booking_status_meanings",
+        "how_it_works"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.05188200325938,
+      "error": ""
+    },
+    {
+      "question": "What happens from asking to book parking through submission and administrator review?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "how_it_works"
+      ],
+      "retrieved_doc_ids": [
+        "how_it_works",
+        "why_use_parking_app",
+        "privacy_and_booking_data"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.30909699678887,
+      "error": ""
+    },
+    {
+      "question": "Who reviews a submitted parking request, and what outcomes can that review produce?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "how_it_works"
+      ],
+      "retrieved_doc_ids": [
+        "how_it_works",
+        "synthetic_company_governance",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.850783996575046,
+      "error": ""
+    },
+    {
+      "question": "When I confirm my reservation details, have I already received administrator approval?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "how_it_works"
+      ],
+      "retrieved_doc_ids": [
+        "booking_confirmation_and_cancel",
+        "how_it_works",
+        "booking_status_meanings"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 42.9647519995342,
+      "error": ""
+    },
+    {
+      "question": "In what order does the guided booking workflow collect the required details?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "booking_steps_detail",
+        "privacy_and_booking_data",
+        "booking_confirmation_and_cancel"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 47.00085600052262,
+      "error": ""
+    },
+    {
+      "question": "Should I provide my name and car registration in ordinary Q&A or in the dedicated booking prompts?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "privacy_and_booking_data",
+        "booking_steps_detail",
+        "booking_input_validation"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 42.37137400195934,
+      "error": ""
+    },
+    {
+      "question": "Will the reservation form ask me to log in, select a spot on a map, or enter a payment card?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_steps_detail"
+      ],
+      "retrieved_doc_ids": [
+        "booking_steps_detail",
+        "privacy_and_booking_data",
+        "payment_methods"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.8638720002491,
+      "error": ""
+    },
+    {
+      "question": "What length limits apply to the full name and car registration number in the booking form?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_input_validation"
+      ],
+      "retrieved_doc_ids": [
+        "booking_input_validation",
+        "booking_steps_detail",
+        "privacy_and_booking_data"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.42307800066192,
+      "error": ""
+    },
+    {
+      "question": "Which timestamp format do the booking prompts accept, and how must the end relate to the start?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_input_validation"
+      ],
+      "retrieved_doc_ids": [
+        "booking_input_validation",
+        "availability_interval",
+        "booking_steps_detail"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.70727300090948,
+      "error": ""
+    },
+    {
+      "question": "What happens after invalid booking input, and does passing validation guarantee approval?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_input_validation"
+      ],
+      "retrieved_doc_ids": [
+        "booking_input_validation",
+        "booking_confirmation_and_cancel",
+        "booking_status_meanings"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.49776500061853,
+      "error": ""
+    },
+    {
+      "question": "How do I abandon an unsubmitted booking while answering an input prompt?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_confirmation_and_cancel"
+      ],
+      "retrieved_doc_ids": [
+        "booking_confirmation_and_cancel",
+        "reservation_changes",
+        "booking_input_validation"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 49.330324996844865,
+      "error": ""
+    },
+    {
+      "question": "What do [approve] and [reject] do at the final confirmation step of the guided form?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_confirmation_and_cancel"
+      ],
+      "retrieved_doc_ids": [
+        "booking_confirmation_and_cancel",
+        "how_it_works",
+        "booking_status_meanings"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 49.696993999532424,
+      "error": ""
+    },
+    {
+      "question": "Does the form's [cancel] control cancel an already submitted reservation?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_confirmation_and_cancel"
+      ],
+      "retrieved_doc_ids": [
+        "booking_confirmation_and_cancel",
+        "reservation_changes",
+        "booking_status_lookup"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.9825339957024,
+      "error": ""
+    },
+    {
+      "question": "How can I check the request submitted in this conversation without pasting a booking ID?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_status_lookup"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_lookup",
+        "lost_parking_pass",
+        "reservation_changes"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.841079997539055,
+      "error": ""
+    },
+    {
+      "question": "Can the reservation status tool search another conversation or another person's booking?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_status_lookup"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_lookup",
+        "lost_parking_pass",
+        "reservation_changes"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.68698599783238,
+      "error": ""
+    },
+    {
+      "question": "What does a status lookup report if this conversation has no submitted reservation?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_status_lookup"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_lookup",
+        "lost_parking_pass",
+        "booking_status_meanings"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.41512999963015,
+      "error": ""
+    },
+    {
+      "question": "What is the difference between pending and approved reservation status?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_status_meanings"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_meanings",
+        "availability_not_a_hold",
+        "booking_status_lookup"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.84745000000112,
+      "error": ""
+    },
+    {
+      "question": "What does a rejected request mean in the customer status response?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_status_meanings"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_meanings",
+        "service_errors_and_missing_data",
+        "booking_status_lookup"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.429073000268545,
+      "error": ""
+    },
+    {
+      "question": "Which reservation status includes the identifier of an assigned space?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "booking_status_meanings"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_meanings",
+        "availability_not_a_hold",
+        "booking_status_lookup"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.96007599582663,
+      "error": ""
+    },
+    {
+      "question": "Can the customer chatbot change dates or replace the car number after a request has been submitted?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "reservation_changes"
+      ],
+      "retrieved_doc_ids": [
+        "reservation_changes",
+        "how_it_works",
+        "lost_parking_pass"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.91287200228544,
+      "error": ""
+    },
+    {
+      "question": "Is there a supported way in this chat to extend or cancel an approved reservation?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "reservation_changes"
+      ],
+      "retrieved_doc_ids": [
+        "reservation_changes",
+        "booking_confirmation_and_cancel",
+        "booking_status_meanings"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.68612100329483,
+      "error": ""
+    },
+    {
+      "question": "If I start a new request, does that modify or cancel my earlier submitted reservation?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "reservation_changes"
+      ],
+      "retrieved_doc_ids": [
+        "reservation_changes",
+        "booking_confirmation_and_cancel",
+        "how_it_works"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.820996993919834,
+      "error": ""
+    },
+    {
+      "question": "What does a successful interval availability lookup returning zero actually mean?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "what_to_do_if_full"
+      ],
+      "retrieved_doc_ids": [
+        "what_to_do_if_full",
+        "availability_interval",
+        "availability_not_a_hold"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.28499400394503,
+      "error": ""
+    },
+    {
+      "question": "If no spaces are free for my visit, can I try a different interval or get automatically rebooked nearby?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "what_to_do_if_full"
+      ],
+      "retrieved_doc_ids": [
+        "what_to_do_if_full",
+        "availability_interval",
+        "availability_now"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.38466599781532,
+      "error": ""
+    },
+    {
+      "question": "Does this chat offer compensation or an automatic replacement service when parking is unavailable?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "what_to_do_if_full"
+      ],
+      "retrieved_doc_ids": [
+        "why_use_parking_app",
+        "ev_charging_parking",
+        "payment_methods"
+      ],
+      "recall_at_3": 0.0,
+      "precision_at_3": 0.0,
+      "mrr": 0.0,
+      "retrieval_latency_ms": 39.721528002701234,
+      "error": ""
+    },
+    {
+      "question": "Can I pay by card or digital wallet through the parking chatbot?",
       "category": "payment",
       "relevant_doc_ids": [
         "payment_methods"
@@ -175,16 +883,33 @@
       "retrieved_doc_ids": [
         "payment_methods",
         "why_use_parking_app",
-        "receipts_and_invoices"
+        "parking_overview"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 51.38225600239821,
+      "retrieval_latency_ms": 42.026789000374265,
       "error": ""
     },
     {
-      "question": "Where in the app can I update my saved card details?",
+      "question": "Does requesting a reservation place a hold on a payment card?",
+      "category": "payment",
+      "relevant_doc_ids": [
+        "payment_methods"
+      ],
+      "retrieved_doc_ids": [
+        "availability_not_a_hold",
+        "payment_methods",
+        "receipts_and_invoices"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 40.56878299888922,
+      "error": ""
+    },
+    {
+      "question": "Is there a saved-payment-method menu, and should I share card details in this conversation?",
       "category": "payment",
       "relevant_doc_ids": [
         "payment_methods"
@@ -192,322 +917,611 @@
       "retrieved_doc_ids": [
         "payment_methods",
         "receipts_and_invoices",
-        "lost_parking_pass"
+        "privacy_and_booking_data"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 43.46415000327397,
+      "retrieval_latency_ms": 41.81528800108936,
       "error": ""
     },
     {
-      "question": "Can a temporary amount be held on my card when I make a reservation?",
+      "question": "Can the assistant generate a business invoice or download a billing PDF?",
       "category": "payment",
       "relevant_doc_ids": [
-        "payment_methods"
+        "receipts_and_invoices"
       ],
       "retrieved_doc_ids": [
+        "receipts_and_invoices",
         "payment_methods",
-        "what_to_do_if_full",
-        "lost_parking_pass"
+        "why_use_parking_app"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 40.81890600355109,
+      "retrieval_latency_ms": 40.83728300611256,
       "error": ""
     },
     {
-      "question": "Can I get a receipt after paying for parking?",
+      "question": "Will a reservation status response serve as proof of payment or trigger an email receipt?",
       "category": "payment",
       "relevant_doc_ids": [
         "receipts_and_invoices"
       ],
       "retrieved_doc_ids": [
         "receipts_and_invoices",
-        "lost_parking_pass",
-        "getting_directions"
+        "booking_status_lookup",
+        "lost_parking_pass"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 39.96861600171542,
+      "retrieval_latency_ms": 42.65654299524613,
       "error": ""
     },
     {
-      "question": "How can I download an invoice for a business expense?",
+      "question": "Does the customer conversation have a refund workflow?",
       "category": "payment",
       "relevant_doc_ids": [
         "receipts_and_invoices"
       ],
       "retrieved_doc_ids": [
         "receipts_and_invoices",
-        "corporate_parking",
+        "booking_status_lookup",
         "lost_parking_pass"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 40.61453200120013,
+      "retrieval_latency_ms": 39.38556800130755,
       "error": ""
     },
     {
-      "question": "Can companies manage parking expenses for their employees?",
+      "question": "Can an employer manage employee permissions and corporate parking accounts in this chat?",
       "category": "general",
       "relevant_doc_ids": [
         "corporate_parking"
       ],
       "retrieved_doc_ids": [
         "corporate_parking",
-        "parking_overview",
-        "lost_parking_pass"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 64.39093500375748,
-      "error": ""
-    },
-    {
-      "question": "What kinds of vehicles are supported by the platform?",
-      "category": "parking_types",
-      "relevant_doc_ids": [
-        "vehicle_types_supported"
-      ],
-      "retrieved_doc_ids": [
-        "vehicle_types_supported",
-        "location_details_and_amenities",
-        "parking_locations"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 55.695580995234195,
-      "error": ""
-    },
-    {
-      "question": "Are vans and small trucks accepted at every parking location?",
-      "category": "parking_types",
-      "relevant_doc_ids": [
-        "vehicle_types_supported"
-      ],
-      "retrieved_doc_ids": [
-        "vehicle_types_supported",
-        "location_details_and_amenities",
-        "parking_locations"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 40.641322993906215,
-      "error": ""
-    },
-    {
-      "question": "How can an electric vehicle driver find a parking space with a charger?",
-      "category": "parking_types",
-      "relevant_doc_ids": [
-        "ev_charging_parking"
-      ],
-      "retrieved_doc_ids": [
-        "ev_charging_parking",
         "how_it_works",
-        "parking_overview"
+        "why_use_parking_app"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 42.49473600066267,
+      "retrieval_latency_ms": 53.26192799839191,
       "error": ""
     },
     {
-      "question": "What types of EV chargers may be available at partner parking lots?",
-      "category": "parking_types",
+      "question": "Are monthly parking subscriptions or volume discounts supported by the chatbot?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "corporate_parking"
+      ],
+      "retrieved_doc_ids": [
+        "corporate_parking",
+        "why_use_parking_app",
+        "payment_methods"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.17123900121078,
+      "error": ""
+    },
+    {
+      "question": "Do company background articles mean the assistant offers consolidated billing and employee expense reports?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "corporate_parking"
+      ],
+      "retrieved_doc_ids": [
+        "corporate_parking",
+        "receipts_and_invoices",
+        "support_and_contact"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.95079900132259,
+      "error": ""
+    },
+    {
+      "question": "Can the assistant filter spaces for motorcycles, vans, or oversized vehicles?",
+      "category": "parking-types",
+      "relevant_doc_ids": [
+        "vehicle_types_supported"
+      ],
+      "retrieved_doc_ids": [
+        "vehicle_types_supported",
+        "why_use_parking_app",
+        "availability_now"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.18369699770119,
+      "error": ""
+    },
+    {
+      "question": "Does recording my car registration establish that my vehicle meets size or eligibility requirements?",
+      "category": "parking-types",
+      "relevant_doc_ids": [
+        "vehicle_types_supported"
+      ],
+      "retrieved_doc_ids": [
+        "vehicle_types_supported",
+        "booking_input_validation",
+        "privacy_and_booking_data"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.14562799845589,
+      "error": ""
+    },
+    {
+      "question": "Can a free-space count tell me whether my tall van will fit under a facility's clearance?",
+      "category": "parking-types",
+      "relevant_doc_ids": [
+        "vehicle_types_supported"
+      ],
+      "retrieved_doc_ids": [
+        "vehicle_types_supported",
+        "accessibility_parking",
+        "availability_now"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.950154001417104,
+      "error": ""
+    },
+    {
+      "question": "Can the chatbot filter parking for EV chargers or reserve a charging bay?",
+      "category": "parking-types",
       "relevant_doc_ids": [
         "ev_charging_parking"
       ],
       "retrieved_doc_ids": [
         "ev_charging_parking",
-        "vehicle_types_supported",
-        "location_details_and_amenities"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 42.088694004633,
-      "error": ""
-    },
-    {
-      "question": "What is the difference between covered, open-air, and underground parking?",
-      "category": "parking_types",
-      "relevant_doc_ids": [
-        "covered_vs_outdoor_parking"
-      ],
-      "retrieved_doc_ids": [
-        "covered_vs_outdoor_parking",
-        "location_details_and_amenities",
-        "booking_steps_detail"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 42.372735995741095,
-      "error": ""
-    },
-    {
-      "question": "Which parking type usually costs the least?",
-      "category": "parking_types",
-      "relevant_doc_ids": [
-        "covered_vs_outdoor_parking"
-      ],
-      "retrieved_doc_ids": [
-        "covered_vs_outdoor_parking",
-        "location_details_and_amenities",
-        "booking_steps_detail"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 38.272161000350025,
-      "error": ""
-    },
-    {
-      "question": "In what kinds of areas does the platform offer parking?",
-      "category": "location",
-      "relevant_doc_ids": [
-        "parking_locations"
-      ],
-      "retrieved_doc_ids": [
-        "parking_overview",
-        "parking_locations",
-        "location_details_and_amenities"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 0.5,
-      "retrieval_latency_ms": 43.94844100170303,
-      "error": ""
-    },
-    {
-      "question": "What should I do if I cannot find parking coverage for my destination?",
-      "category": "location",
-      "relevant_doc_ids": [
-        "parking_locations"
-      ],
-      "retrieved_doc_ids": [
-        "parking_locations",
-        "lost_parking_pass",
-        "what_to_do_if_full"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 58.2661160005955,
-      "error": ""
-    },
-    {
-      "question": "Are shuttle services available for airport parking?",
-      "category": "location",
-      "relevant_doc_ids": [
-        "airport_parking"
-      ],
-      "retrieved_doc_ids": [
-        "airport_parking",
-        "accessibility_parking",
+        "why_use_parking_app",
         "parking_overview"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 40.44540700124344,
+      "retrieval_latency_ms": 39.940362999914214,
       "error": ""
     },
     {
-      "question": "What airport parking options are offered for longer trips?",
-      "category": "location",
+      "question": "Does the knowledge base contain verified charger specifications or a tool for live connector occupancy?",
+      "category": "parking-types",
       "relevant_doc_ids": [
-        "airport_parking"
+        "ev_charging_parking"
       ],
       "retrieved_doc_ids": [
-        "airport_parking",
-        "covered_vs_outdoor_parking",
-        "parking_overview"
+        "ev_charging_parking",
+        "location_details_and_amenities",
+        "static_and_dynamic_information"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 38.866369002789725,
+      "retrieval_latency_ms": 43.50446299940813,
       "error": ""
     },
     {
-      "question": "What details can I see about a specific parking facility before booking?",
-      "category": "location",
+      "question": "Does approval of a standard parking reservation guarantee access to EV charging?",
+      "category": "parking-types",
       "relevant_doc_ids": [
-        "location_details_and_amenities"
+        "ev_charging_parking"
       ],
       "retrieved_doc_ids": [
-        "getting_directions",
-        "lost_parking_pass",
+        "ev_charging_parking",
+        "why_use_parking_app",
         "how_it_works"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.88054400240071,
+      "error": ""
+    },
+    {
+      "question": "In general parking terminology, how do covered, outdoor, and underground spaces differ?",
+      "category": "parking-types",
+      "relevant_doc_ids": [
+        "covered_vs_outdoor_parking"
+      ],
+      "retrieved_doc_ids": [
+        "covered_vs_outdoor_parking",
+        "why_use_parking_app",
+        "availability_now"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.720523996744305,
+      "error": ""
+    },
+    {
+      "question": "Can this assistant compare prices by parking structure type or guarantee a covered assignment?",
+      "category": "parking-types",
+      "relevant_doc_ids": [
+        "covered_vs_outdoor_parking"
+      ],
+      "retrieved_doc_ids": [
+        "current_prices",
+        "why_use_parking_app",
+        "parking_overview"
       ],
       "recall_at_3": 0.0,
       "precision_at_3": 0.0,
       "mrr": 0.0,
-      "retrieval_latency_ms": 42.48665199702373,
+      "retrieval_latency_ms": 41.79266300343443,
       "error": ""
     },
     {
-      "question": "How do I get turn-by-turn directions after making a reservation?",
+      "question": "Does the term underground parking by itself imply security or climate control?",
+      "category": "parking-types",
+      "relevant_doc_ids": [
+        "covered_vs_outdoor_parking"
+      ],
+      "retrieved_doc_ids": [
+        "covered_vs_outdoor_parking",
+        "why_use_parking_app",
+        "privacy_and_booking_data"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 39.43998600152554,
+      "error": ""
+    },
+    {
+      "question": "Can the chatbot search for parking near my destination and compare distances?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "parking_locations"
+      ],
+      "retrieved_doc_ids": [
+        "parking_overview",
+        "why_use_parking_app",
+        "parking_locations"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "retrieval_latency_ms": 42.09295599866891,
+      "error": ""
+    },
+    {
+      "question": "Is there a verified directory of operating cities or a way to submit a location request?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "parking_locations"
+      ],
+      "retrieved_doc_ids": [
+        "parking_locations",
+        "location_details_and_amenities",
+        "support_and_contact"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.52028199657798,
+      "error": ""
+    },
+    {
+      "question": "Should I share my location to obtain a nearby parking recommendation from this assistant?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "parking_locations"
+      ],
+      "retrieved_doc_ids": [
+        "parking_locations",
+        "parking_overview",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 65.52369600103702,
+      "error": ""
+    },
+    {
+      "question": "Can the assistant locate airport parking or book an airport shuttle?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "airport_parking"
+      ],
+      "retrieved_doc_ids": [
+        "airport_parking",
+        "why_use_parking_app",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.49990599742159,
+      "error": ""
+    },
+    {
+      "question": "Are valet parking, terminal drop-off, and transfer timetables verified services in this dataset?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "airport_parking"
+      ],
+      "retrieved_doc_ids": [
+        "airport_parking",
+        "why_use_parking_app",
+        "payment_methods"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.209711999224965,
+      "error": ""
+    },
+    {
+      "question": "Does a reservation covering a long trip imply an airport location or discounted travel package?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "airport_parking"
+      ],
+      "retrieved_doc_ids": [
+        "airport_parking",
+        "lost_in_lot_help",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 46.760270997765474,
+      "error": ""
+    },
+    {
+      "question": "Do the customer database tools return facility photographs, reviews, or floor plans?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "location_details_and_amenities"
+      ],
+      "retrieved_doc_ids": [
+        "location_details_and_amenities",
+        "static_and_dynamic_information",
+        "support_and_contact"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.70358399662655,
+      "error": ""
+    },
+    {
+      "question": "Can a database lookup provide GPS coordinates and verified amenity inventories for a parking facility?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "location_details_and_amenities"
+      ],
+      "retrieved_doc_ids": [
+        "location_details_and_amenities",
+        "why_use_parking_app",
+        "static_and_dynamic_information"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.30957700544968,
+      "error": ""
+    },
+    {
+      "question": "Is an assigned space identifier also a facility address or verified description of amenities?",
+      "category": "location",
+      "relevant_doc_ids": [
+        "location_details_and_amenities"
+      ],
+      "retrieved_doc_ids": [
+        "location_details_and_amenities",
+        "getting_directions",
+        "lost_in_lot_help"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.857872005493846,
+      "error": ""
+    },
+    {
+      "question": "Can the chatbot provide turn-by-turn directions or export a route to a map?",
       "category": "booking",
       "relevant_doc_ids": [
         "getting_directions"
       ],
       "retrieved_doc_ids": [
         "getting_directions",
-        "how_it_works",
-        "lost_parking_pass"
+        "parking_overview",
+        "parking_locations"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 45.15802099922439,
+      "retrieval_latency_ms": 53.83238899958087,
       "error": ""
     },
     {
-      "question": "Where can I find my active parking reservation if I cannot see the confirmation?",
+      "question": "Will an approved reservation supply a QR pass, gate code, or entry instructions through this chat?",
       "category": "booking",
       "relevant_doc_ids": [
-        "lost_parking_pass"
+        "getting_directions"
       ],
       "retrieved_doc_ids": [
-        "lost_parking_pass",
+        "getting_directions",
         "lost_in_lot_help",
-        "what_to_do_if_full"
+        "lost_parking_pass"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 39.48495099757565,
+      "retrieval_latency_ms": 43.52179700072156,
       "error": ""
     },
     {
-      "question": "What happens if the parking lot appears full when I am searching?",
+      "question": "Can I use the assigned space identifier as a digital access credential?",
       "category": "booking",
       "relevant_doc_ids": [
-        "what_to_do_if_full"
+        "getting_directions"
       ],
       "retrieved_doc_ids": [
-        "what_to_do_if_full",
-        "lost_parking_pass",
+        "getting_directions",
+        "availability_not_a_hold",
         "lost_in_lot_help"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 40.45461500209058,
+      "retrieval_latency_ms": 47.89469300158089,
       "error": ""
     },
     {
-      "question": "What security measures help protect vehicles at partner parking lots?",
+      "question": "I cannot find a confirmation for a request submitted in this conversation; what can I ask the assistant to check?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_parking_pass"
+      ],
+      "retrieved_doc_ids": [
+        "lost_parking_pass",
+        "booking_status_lookup",
+        "how_it_works"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.21040599764092,
+      "error": ""
+    },
+    {
+      "question": "Does this chat have a Bookings > Active page or send reservation confirmations by email?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_parking_pass"
+      ],
+      "retrieved_doc_ids": [
+        "lost_parking_pass",
+        "receipts_and_invoices",
+        "booking_status_lookup"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.37236500153085,
+      "error": ""
+    },
+    {
+      "question": "Can a missing reservation from another conversation be recovered using my name or registration number?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_parking_pass"
+      ],
+      "retrieved_doc_ids": [
+        "lost_parking_pass",
+        "booking_status_lookup",
+        "reservation_changes"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.96153899829369,
+      "error": ""
+    },
+    {
+      "question": "Can the assistant locate my vehicle or guide me through the inside of a parking facility?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_in_lot_help"
+      ],
+      "retrieved_doc_ids": [
+        "lost_in_lot_help",
+        "why_use_parking_app",
+        "vehicle_types_supported"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.531713003176264,
+      "error": ""
+    },
+    {
+      "question": "If I am lost inside the lot, can the chatbot look up a floor or section code or connect to an attendant?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_in_lot_help"
+      ],
+      "retrieved_doc_ids": [
+        "lost_in_lot_help",
+        "getting_directions",
+        "parking_overview"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 46.15635200025281,
+      "error": ""
+    },
+    {
+      "question": "What limited information can the assistant retrieve when I cannot find the space assigned to my approved request?",
+      "category": "booking",
+      "relevant_doc_ids": [
+        "lost_in_lot_help"
+      ],
+      "retrieved_doc_ids": [
+        "availability_not_a_hold",
+        "booking_status_meanings",
+        "lost_in_lot_help"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "retrieval_latency_ms": 41.19874300522497,
+      "error": ""
+    },
+    {
+      "question": "Are CCTV, patrols, insurance, and barriers verified for parking facilities in this dataset?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "safety_and_security"
+      ],
+      "retrieved_doc_ids": [
+        "safety_and_security",
+        "why_use_parking_app",
+        "static_and_dynamic_information"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.616954003984574,
+      "error": ""
+    },
+    {
+      "question": "Can the chatbot guarantee vehicle safety or claim every facility has been vetted?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "safety_and_security"
+      ],
+      "retrieved_doc_ids": [
+        "vehicle_types_supported",
+        "support_and_contact",
+        "parking_locations"
+      ],
+      "recall_at_3": 0.0,
+      "precision_at_3": 0.0,
+      "mrr": 0.0,
+      "retrieval_latency_ms": 40.72536599414889,
+      "error": ""
+    },
+    {
+      "question": "What general vehicle-security precautions can be offered without making a facility-specific safety claim?",
       "category": "general",
       "relevant_doc_ids": [
         "safety_and_security"
@@ -515,171 +1529,220 @@
       "retrieved_doc_ids": [
         "safety_and_security",
         "vehicle_types_supported",
-        "accessibility_parking"
+        "privacy_and_booking_data"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 40.97628100134898,
+      "retrieval_latency_ms": 45.10317899985239,
       "error": ""
     },
     {
-      "question": "Can I filter for parking spaces that are accessible to disabled drivers or passengers?",
+      "question": "Can the chatbot filter accessible bays or reserve a disability-specific space?",
       "category": "general",
       "relevant_doc_ids": [
         "accessibility_parking"
       ],
       "retrieved_doc_ids": [
         "accessibility_parking",
-        "vehicle_types_supported",
-        "location_details_and_amenities"
+        "why_use_parking_app",
+        "ev_charging_parking"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 39.847574997111224,
+      "retrieval_latency_ms": 39.95915499399416,
       "error": ""
     },
     {
-      "question": "Could I need to show a disability parking permit to use an accessible space?",
+      "question": "Does aggregate parking availability tell me how many accessible spaces are free?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "accessibility_parking"
+      ],
+      "retrieved_doc_ids": [
+        "availability_now",
+        "accessibility_parking",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 44.5762180024758,
+      "error": ""
+    },
+    {
+      "question": "Can general information about wider bays and step-free routes verify a facility's ramp access or local permit rules?",
       "category": "general",
       "relevant_doc_ids": [
         "accessibility_parking"
       ],
       "retrieved_doc_ids": [
         "accessibility_parking",
-        "lost_parking_pass",
-        "parking_overview"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 44.26652300026035,
-      "error": ""
-    },
-    {
-      "question": "What should I check if I cannot find my assigned spot inside the facility?",
-      "category": "booking",
-      "relevant_doc_ids": [
-        "lost_in_lot_help"
-      ],
-      "retrieved_doc_ids": [
-        "lost_in_lot_help",
-        "what_to_do_if_full",
-        "lost_parking_pass"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 39.413909005816095,
-      "error": ""
-    },
-    {
-      "question": "How can I reach someone for help while I am at the parking lot?",
-      "category": "booking",
-      "relevant_doc_ids": [
-        "lost_in_lot_help",
-        "support_and_contact"
-      ],
-      "retrieved_doc_ids": [
-        "lost_in_lot_help",
-        "support_and_contact",
-        "lost_parking_pass"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.6666666666666666,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 43.68594099651091,
-      "error": ""
-    },
-    {
-      "question": "What are the customer support channels and when are they available?",
-      "category": "general",
-      "relevant_doc_ids": [
-        "support_and_contact"
-      ],
-      "retrieved_doc_ids": [
-        "support_and_contact",
-        "what_to_do_if_full",
-        "location_details_and_amenities"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 40.07390799961286,
-      "error": ""
-    },
-    {
-      "question": "Can I contact the specific parking facility about an active booking?",
-      "category": "general",
-      "relevant_doc_ids": [
-        "support_and_contact"
-      ],
-      "retrieved_doc_ids": [
-        "lost_parking_pass",
-        "lost_in_lot_help",
-        "support_and_contact"
-      ],
-      "recall_at_3": 1.0,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 0.3333333333333333,
-      "retrieval_latency_ms": 44.431688998884056,
-      "error": ""
-    },
-    {
-      "question": "Do parking lot listings show accessibility features and operating hours?",
-      "category": "location",
-      "relevant_doc_ids": [
-        "location_details_and_amenities"
-      ],
-      "retrieved_doc_ids": [
         "location_details_and_amenities",
-        "accessibility_parking",
-        "lost_parking_pass"
+        "getting_directions"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 49.651093999273144,
+      "retrieval_latency_ms": 45.38422299810918,
       "error": ""
     },
     {
-      "question": "What should I do if I arrive and find a problem with my reserved spot?",
-      "category": "booking",
+      "question": "Can the chatbot transfer me to a human agent or create a support ticket?",
+      "category": "general",
       "relevant_doc_ids": [
-        "what_to_do_if_full",
         "support_and_contact"
       ],
       "retrieved_doc_ids": [
-        "what_to_do_if_full",
-        "lost_parking_pass",
-        "lost_in_lot_help"
-      ],
-      "recall_at_3": 0.5,
-      "precision_at_3": 0.3333333333333333,
-      "mrr": 1.0,
-      "retrieval_latency_ms": 42.14556900114985,
-      "error": ""
-    },
-    {
-      "question": "Can businesses get consolidated parking bills and expense reports?",
-      "category": "general",
-      "relevant_doc_ids": [
-        "corporate_parking"
-      ],
-      "retrieved_doc_ids": [
-        "corporate_parking",
+        "support_and_contact",
         "receipts_and_invoices",
         "lost_parking_pass"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 44.502314005512744,
+      "retrieval_latency_ms": 37.77926899783779,
       "error": ""
     },
     {
-      "question": "What is the address listed for the fictional Demo Garage test location?",
+      "question": "Are any verified support phone numbers, email addresses, hours, or response times supplied here?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "support_and_contact"
+      ],
+      "retrieved_doc_ids": [
+        "support_and_contact",
+        "parking_locations",
+        "working_hours_lookup"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.87698199832812,
+      "error": ""
+    },
+    {
+      "question": "Can the assistant send an email to a support team or claim that someone has been contacted?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "support_and_contact"
+      ],
+      "retrieved_doc_ids": [
+        "support_and_contact",
+        "lost_parking_pass",
+        "receipts_and_invoices"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.456717994762585,
+      "error": ""
+    },
+    {
+      "question": "How does personal-information handling differ between ordinary parking Q&A and the dedicated booking workflow?",
+      "category": "privacy",
+      "relevant_doc_ids": [
+        "privacy_and_booking_data"
+      ],
+      "retrieved_doc_ids": [
+        "privacy_and_booking_data",
+        "booking_steps_detail",
+        "how_it_works"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.56832399510313,
+      "error": ""
+    },
+    {
+      "question": "What sensitive information should I avoid providing beyond the booking workflow's required name and car registration?",
+      "category": "privacy",
+      "relevant_doc_ids": [
+        "privacy_and_booking_data"
+      ],
+      "retrieved_doc_ids": [
+        "privacy_and_booking_data",
+        "booking_steps_detail",
+        "booking_input_validation"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 46.005392003280576,
+      "error": ""
+    },
+    {
+      "question": "What privacy boundary prevents the customer status tool from exposing other users' booking records?",
+      "category": "privacy",
+      "relevant_doc_ids": [
+        "privacy_and_booking_data"
+      ],
+      "retrieved_doc_ids": [
+        "privacy_and_booking_data",
+        "booking_status_lookup",
+        "location_details_and_amenities"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.65274100139504,
+      "error": ""
+    },
+    {
+      "question": "Does a missing pricing record mean parking is free?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "service_errors_and_missing_data"
+      ],
+      "retrieved_doc_ids": [
+        "service_errors_and_missing_data",
+        "why_use_parking_app",
+        "payment_methods"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.54641699662898,
+      "error": ""
+    },
+    {
+      "question": "Should a failed availability query be interpreted as a full parking lot?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "service_errors_and_missing_data"
+      ],
+      "retrieved_doc_ids": [
+        "service_errors_and_missing_data",
+        "what_to_do_if_full",
+        "why_use_parking_app"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.51153199543478,
+      "error": ""
+    },
+    {
+      "question": "Can a temporarily unavailable status service establish whether a request is pending, approved, or rejected?",
+      "category": "general",
+      "relevant_doc_ids": [
+        "service_errors_and_missing_data"
+      ],
+      "retrieved_doc_ids": [
+        "booking_status_meanings",
+        "service_errors_and_missing_data",
+        "availability_not_a_hold"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.5,
+      "retrieval_latency_ms": 40.42669900081819,
+      "error": ""
+    },
+    {
+      "question": "What placeholder address is listed for the explicitly fictional Demo Garage test location?",
       "category": "location",
       "relevant_doc_ids": [
         "synthetic_demo_location"
@@ -687,46 +1750,557 @@
       "retrieved_doc_ids": [
         "synthetic_demo_location",
         "parking_locations",
-        "location_details_and_amenities"
+        "lost_in_lot_help"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 42.50044400396291,
+      "retrieval_latency_ms": 39.71256999648176,
       "error": ""
     },
     {
-      "question": "Can I navigate to or make a real booking at Demo Garage?",
+      "question": "Can the fictional Demo Garage address be used for real navigation or a real booking?",
       "category": "location",
       "relevant_doc_ids": [
         "synthetic_demo_location"
       ],
       "retrieved_doc_ids": [
         "synthetic_demo_location",
-        "how_it_works",
-        "what_to_do_if_full"
+        "parking_locations",
+        "getting_directions"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
       "mrr": 1.0,
-      "retrieval_latency_ms": 41.37090500444174,
+      "retrieval_latency_ms": 42.16674799681641,
       "error": ""
     },
     {
-      "question": "Where can I find the entry code or QR instructions for a booked facility?",
-      "category": "booking",
+      "question": "Are real-world hours, rates, amenities, or availability defined for the fictional Demo Garage?",
+      "category": "location",
       "relevant_doc_ids": [
-        "getting_directions"
+        "synthetic_demo_location"
       ],
       "retrieved_doc_ids": [
-        "lost_in_lot_help",
-        "getting_directions",
-        "lost_parking_pass"
+        "synthetic_demo_location",
+        "parking_locations",
+        "static_and_dynamic_information"
       ],
       "recall_at_3": 1.0,
       "precision_at_3": 0.3333333333333333,
-      "mrr": 0.5,
-      "retrieval_latency_ms": 41.0537390052923,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.79825199773768,
+      "error": ""
+    },
+    {
+      "question": "What is the fictional company Parkfolio Labs, and why was it created for this dataset?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_identity"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_identity",
+        "synthetic_company_founding",
+        "synthetic_company_mission"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.09571100020548,
+      "error": ""
+    },
+    {
+      "question": "Do the fictional Parkfolio Labs company names, dates, and exchange references establish real businesses or additional chatbot capabilities?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_identity"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_identity",
+        "synthetic_company_seed_funding",
+        "synthetic_company_ipo"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 47.85760900267633,
+      "error": ""
+    },
+    {
+      "question": "In what year was Parkfolio Labs founded in the fictional company timeline?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_founding",
+        "synthetic_company_timeline"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_founding",
+        "synthetic_company_timeline",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.6666666666666666,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.85828400275204,
+      "error": ""
+    },
+    {
+      "question": "What were the fictional Parkfolio Labs spin-out's original research purpose and first project, rather than a navigation or payment app?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_founding"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_founding",
+        "synthetic_company_founder",
+        "synthetic_company_ipo_proceeds"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.693297993741,
+      "error": ""
+    },
+    {
+      "question": "Which fictional organization founded Parkfolio Labs, and was the founder a named individual?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_founder"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_founder",
+        "synthetic_company_founding",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 47.02668899699347,
+      "error": ""
+    },
+    {
+      "question": "What archive and charter did the invented Curb Research Cooperative contribute to fictional Parkfolio Labs?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_founder"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_founder",
+        "synthetic_company_archive",
+        "synthetic_company_timeline"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.47603700403124,
+      "error": ""
+    },
+    {
+      "question": "What mission and editorial values did the fictional Parkfolio Labs adopt?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_mission"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_mission",
+        "synthetic_company_founding",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.48974999791244,
+      "error": ""
+    },
+    {
+      "question": "Does the fictional Parkfolio Labs mission amount to an availability guarantee or commercial service-level agreement?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_mission"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_mission",
+        "synthetic_company_identity",
+        "synthetic_company_ipo_proceeds"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.29182700125966,
+      "error": ""
+    },
+    {
+      "question": "Which parking concepts did the fictional Parkfolio Labs terminology archive standardize for internal training?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_archive"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_archive",
+        "synthetic_company_identity",
+        "synthetic_company_founding"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.68325600080425,
+      "error": ""
+    },
+    {
+      "question": "Did the fictional 2016 terminology archive introduce a live facility directory, maps, or payment processing?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_archive"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_archive",
+        "parking_locations",
+        "synthetic_company_timeline"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.001613000640646,
+      "error": ""
+    },
+    {
+      "question": "What distinction did the fictional Parkfolio Labs reservation research pilot study, and what was its invented conclusion?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_research_pilot"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_research_pilot",
+        "synthetic_company_founding",
+        "synthetic_company_ipo_proceeds"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 41.834372001176234,
+      "error": ""
+    },
+    {
+      "question": "Did the fictional 2018 research pilot use real facilities or create an automatic approval policy?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_research_pilot"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_research_pilot",
+        "synthetic_company_governance",
+        "synthetic_company_ipo_proceeds"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.898584993963595,
+      "error": ""
+    },
+    {
+      "question": "How many fictional credits did Parkfolio Labs raise in its invented seed round, who led it, and what was the allocation for?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_seed_funding"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_seed_funding",
+        "synthetic_company_ipo_proceeds",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.811213996377774,
+      "error": ""
+    },
+    {
+      "question": "Can the fictional credits in Parkfolio Labs' synthetic seed-funding story be used as a parking tariff, customer balance, or payment option?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_seed_funding"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_seed_funding",
+        "synthetic_company_identity",
+        "synthetic_company_ipo_proceeds"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.283831993700005,
+      "error": ""
+    },
+    {
+      "question": "What did the invented Clear Curb editorial campaign change in fictional Parkfolio Labs' wording?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_rebrand"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_rebrand",
+        "synthetic_company_founder",
+        "synthetic_company_timeline"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.20262299349997,
+      "error": ""
+    },
+    {
+      "question": "Was fictional Parkfolio Labs' Clear Curb campaign a separate company or a feature providing navigation and guaranteed reservations?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_rebrand"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_rebrand",
+        "synthetic_company_founder",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.11938799987547,
+      "error": ""
+    },
+    {
+      "question": "On which fictional exchange did Parkfolio Labs hold its invented IPO, and what was the narrative ticker?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_ipo"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_ipo",
+        "synthetic_company_ipo_proceeds",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.9138090009219,
+      "error": ""
+    },
+    {
+      "question": "Does the fictional PKFL-DEMO listing represent a real security or support stock purchases and investment advice through this chatbot?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_ipo"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_ipo",
+        "synthetic_company_seed_funding",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.32470800343435,
+      "error": ""
+    },
+    {
+      "question": "How did the fictional Parkfolio Labs IPO prospectus divide proceeds among research, evaluation infrastructure, and editorial training?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_ipo_proceeds"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_ipo_proceeds",
+        "synthetic_company_seed_funding",
+        "synthetic_company_ipo"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 38.8526480019209,
+      "error": ""
+    },
+    {
+      "question": "Do the invented IPO allocation percentages for fictional Parkfolio Labs describe audited spending, parking discounts, or promised customer features?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_ipo_proceeds"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_ipo_proceeds",
+        "synthetic_company_seed_funding",
+        "synthetic_company_ipo"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.38547300035134,
+      "error": ""
+    },
+    {
+      "question": "Which three nonfinancial measures appeared in the fictional Parkfolio Labs 2022 annual report?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_annual_report"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_annual_report",
+        "synthetic_company_ipo_proceeds",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 45.12342999805696,
+      "error": ""
+    },
+    {
+      "question": "Did the invented Parkfolio Labs annual report provide revenue, profit, real customer counts, or a downloadable investor document?",
+      "category": "company-finance",
+      "relevant_doc_ids": [
+        "synthetic_company_annual_report"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_annual_report",
+        "synthetic_company_identity",
+        "synthetic_company_seed_funding"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 40.77399100060575,
+      "error": ""
+    },
+    {
+      "question": "What content-review responsibilities belong to the fictional Parkfolio Labs Documentation Review Council?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_governance"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_governance",
+        "synthetic_company_training",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 46.12772600376047,
+      "error": ""
+    },
+    {
+      "question": "Can the fictional Documentation Review Council approve operational parking requests or act as a chatbot support channel?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_governance"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_governance",
+        "how_it_works",
+        "privacy_and_booking_data"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 47.44427400146378,
+      "error": ""
+    },
+    {
+      "question": "What was the purpose of the fictional Parkfolio Labs Paperlight program in its imagined offices?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_sustainability"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_sustainability",
+        "synthetic_company_founding",
+        "synthetic_company_identity"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.57099999813363,
+      "error": ""
+    },
+    {
+      "question": "Does the fictional Paperlight program claim a carbon reduction percentage, environmental certification, or EV charging infrastructure?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_sustainability"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_sustainability",
+        "ev_charging_parking",
+        "synthetic_company_timeline"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 42.15883200231474,
+      "error": ""
+    },
+    {
+      "question": "What distinctions and rewriting skills does the invented Parkfolio Labs Plain Language Workshop teach editors?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_training"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_training",
+        "synthetic_company_rebrand",
+        "synthetic_company_mission"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.337842002278194,
+      "error": ""
+    },
+    {
+      "question": "Is the fictional Plain Language Workshop a bookable customer course or an additional reservation workflow?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_training"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_training",
+        "booking_confirmation_and_cancel",
+        "privacy_and_booking_data"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 43.09562800335698,
+      "error": ""
+    },
+    {
+      "question": "What is the complete fictional Parkfolio Labs milestone sequence from its founding through the Paperlight program?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_timeline"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_sustainability",
+        "synthetic_company_founding",
+        "synthetic_company_timeline"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 0.3333333333333333,
+      "retrieval_latency_ms": 48.173652998229954,
+      "error": ""
+    },
+    {
+      "question": "Should the fictional Parkfolio Labs chronology be treated as a product release schedule or a real corporate record?",
+      "category": "company",
+      "relevant_doc_ids": [
+        "synthetic_company_timeline"
+      ],
+      "retrieved_doc_ids": [
+        "synthetic_company_timeline",
+        "synthetic_company_identity",
+        "synthetic_company_seed_funding"
+      ],
+      "recall_at_3": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "mrr": 1.0,
+      "retrieval_latency_ms": 44.921886998054106,
       "error": ""
     }
   ]

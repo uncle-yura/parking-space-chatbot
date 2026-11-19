@@ -169,30 +169,6 @@ class SqlService:
             cols = [d.name for d in cur.description or []]
             return [dict(zip(cols, row)) for row in cur.fetchall()]
 
-    def get_bookings(
-        self, lot_id: int | None = None, status: str | None = None
-    ) -> list[dict]:
-        """Get bookings — all or filtered by lot / status."""
-        with self.target_conn() as conn, conn.cursor() as cur:
-            sql_str = """
-                    SELECT b.id, b.customer_name, b.car_number, b.start_at,
-                           b.end_at, b.status, b.lot_id, pl.identifier AS lot_identifier,
-                           b.customer_id, b.created_at
-                    FROM bookings b
-                    LEFT JOIN parking_lots pl ON pl.id = b.lot_id;
-                """
-            params: list = []
-            if lot_id:
-                sql_str += " WHERE b.lot_id = %s"
-                params.append(lot_id)
-            if status:
-                sql_str += " AND b.status = %s"
-                params.append(status)
-            sql_str += " ORDER BY b.start_at DESC"
-            cur.execute(sql_str, params)
-            cols = [d.name for d in cur.description or []]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
-
     def get_booking_status(self, booking_id: UUID) -> dict | None:
         """Return the status and assigned lot for one booking, without customer PII."""
         with self.target_conn() as conn, conn.cursor() as cur:
@@ -219,7 +195,10 @@ class SqlService:
                 WITH eligible AS (
                     SELECT id
                     FROM bookings
-                    WHERE status = 'pending'
+                    WHERE (
+                          status = 'pending'
+                          OR (status = 'approved' AND mcp_saved_at IS NULL)
+                      )
                       AND (
                           review_claimed_at IS NULL
                           OR review_claimed_at < now() - interval '30 minutes'
@@ -244,10 +223,24 @@ class SqlService:
             cur.execute(
                 """
                 UPDATE bookings SET review_claimed_at = NULL
-                WHERE id = %s AND status = 'pending';
+                WHERE id = %s AND status IN ('pending', 'approved');
                 """,
                 (booking_id,),
             )
+
+    def mark_reservation_persisted(self, booking_id: UUID) -> bool:
+        """Record successful MCP persistence and clear its processing claim."""
+        with self.target_conn() as conn, conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE bookings
+                SET mcp_saved_at = now(), review_claimed_at = NULL
+                WHERE id = %s AND status = 'approved' AND mcp_saved_at IS NULL
+                RETURNING id;
+                """,
+                (booking_id,),
+            )
+            return cur.fetchone() is not None
 
     def reject_pending_booking(self, booking_id: UUID) -> dict | None:
         """Reject a pending reservation after agent review."""
@@ -262,7 +255,11 @@ class SqlService:
                 """,
                 (booking_id,),
             )
-            return {"status": "rejected", "lot_id": None, "lot_identifier": None} if cur.fetchone() else None
+            return (
+                {"status": "rejected", "lot_id": None, "lot_identifier": None}
+                if cur.fetchone()
+                else None
+            )
 
     def process_pending_booking(self, booking_id: UUID) -> dict | None:
         """Approve a pending request if a lot is free, otherwise reject it.

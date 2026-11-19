@@ -1,4 +1,6 @@
 # from dataclasses import dataclass
+from uuid import uuid4
+
 from langchain_core.embeddings import Embeddings
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import AnyMessage
@@ -7,8 +9,8 @@ from langgraph.graph import MessagesState
 from presidio_analyzer.analyzer_engine import AnalyzerEngine
 from pydantic import BaseModel, ConfigDict, model_validator
 
-from app.services.embeddings import OllamaEmbeddingsService
-from app.services.llm_chat import OllamaLLMService
+from app.services.embeddings import EmbeddingsService
+from app.services.llm_chat import LLMService
 from app.services.sql_service import SqlService
 from app.services.weaviate_vectorstore import WeaviateService
 
@@ -32,14 +34,16 @@ class RagGraphContextSchema(BaseModel):
     @classmethod
     def fill_missing(cls, data):
         if isinstance(data, dict):
+            if not data.get("thread_id"):
+                data["thread_id"] = str(uuid4())
             if not data.get("llm"):
-                data["llm"] = OllamaLLMService().llm
+                data["llm"] = LLMService().llm
             if not data.get("sql_service"):
                 data["sql_service"] = SqlService()
             if not data.get("pii_analyzer"):
                 data["pii_analyzer"] = AnalyzerEngine()
             if not data.get("embeddings"):
-                data["embeddings"] = OllamaEmbeddingsService().embeddings
+                data["embeddings"] = EmbeddingsService().embeddings
             if not data.get("vectorstore"):
                 data["vectorstore"] = WeaviateService(
                     index_name="ParkingKnowledge",
@@ -60,7 +64,7 @@ class AdministratorGraphContextSchema(BaseModel):
     def fill_missing(cls, data):
         if isinstance(data, dict):
             if not data.get("llm"):
-                data["llm"] = OllamaLLMService().llm
+                data["llm"] = LLMService().llm
             if not data.get("sql_service"):
                 data["sql_service"] = SqlService()
         return data

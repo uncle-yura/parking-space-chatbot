@@ -30,7 +30,11 @@ def evaluate(vectorstore, questions):
             )
             hits = [doc_id for doc_id in retrieved if doc_id in relevant]
             rank = next(
-                (index for index, doc_id in enumerate(retrieved, 1) if doc_id in relevant),
+                (
+                    index
+                    for index, doc_id in enumerate(retrieved, 1)
+                    if doc_id in relevant
+                ),
                 None,
             )
             error = ""
@@ -73,11 +77,11 @@ def main():
             raise TypeError("Dataset must contain a JSON array")
 
         # Load the same services/configuration used by the chatbot; don't alter vector_search.
-        from app.services.embeddings import OllamaEmbeddingsService
+        from app.services.embeddings import EmbeddingsService
         from app.services.weaviate_vectorstore import WeaviateService
 
         weaviate_service = WeaviateService(
-            "ParkingKnowledge", OllamaEmbeddingsService().embeddings
+            "ParkingKnowledge", EmbeddingsService().embeddings
         )
         vectorstore = weaviate_service.get_vectorstore()
     except Exception as exc:
@@ -113,7 +117,9 @@ def main():
         print(f"  {name}: {value:.4f}")
 
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
-    args.json_out.write_text(json.dumps({"metrics": metrics, "results": results}, indent=2) + "\n")
+    args.json_out.write_text(
+        json.dumps({"metrics": metrics, "results": results}, indent=2) + "\n"
+    )
     args.csv_out.parent.mkdir(parents=True, exist_ok=True)
     with args.csv_out.open("w", newline="") as csv_file:
         fields = [
@@ -131,8 +137,11 @@ def main():
         writer.writeheader()
         for result in results:
             writer.writerow(
-                {**result, "relevant_doc_ids": json.dumps(result["relevant_doc_ids"]),
-                 "retrieved_doc_ids": json.dumps(result["retrieved_doc_ids"])}
+                {
+                    **result,
+                    "relevant_doc_ids": json.dumps(result["relevant_doc_ids"]),
+                    "retrieved_doc_ids": json.dumps(result["retrieved_doc_ids"]),
+                }
             )
     print(f"\nJSON: {args.json_out}\nCSV: {args.csv_out}")
     return 1 if any(result["error"] for result in results) else 0
