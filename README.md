@@ -2,6 +2,21 @@
 
 An AI-powered parking space assistant built with LangGraph, Ollama, and PostgreSQL. It provides RAG-based Q&A over parking knowledge and supports automated booking workflows.
 
+## Stage Summaries and Presentation
+
+Each summary describes the implementation at its corresponding commit:
+
+| Stage | Commit | Summary |
+|---|---|---|
+| 1 — RAG and reservation requests | `cb55403` | [Stage 1 README](docs/stage-1/README.md) |
+| 2 — Administrator processing | `4e91d5b` | [Stage 2 README](docs/stage-2/README.md) |
+| 3 — MCP persistence | `8f3e6e3` | [Stage 3 README](docs/stage-3/README.md) |
+| 4 — Integrated orchestration and checks | `91e2a65` | [Stage 4 README](docs/stage-4/README.md) |
+
+[PowerPoint presentation](docs/presentation/parking-space-chatbot.pptx) — 13 editable slides with speaker notes. See the [presentation README](docs/presentation/README.md) for contents and rebuild instructions.
+
+**Implementation note:** administrator decisions are currently automated (deterministic in Stage 2, LLM-assisted from Stage 3), not made by a human approval interface. Existing scenario evaluations are not concurrent load tests.
+
 ## Quick Start
 
 ```bash
